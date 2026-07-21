@@ -646,7 +646,1525 @@
     .home-menu-grid{grid-template-columns:1fr;}
     .explore-head h2{font-size:32px;}
 
-    .menu-modal{width:100vw; max-width:100vw; height:100vh; max-height:100vh; border-radius:0; top:0; left:0; transform:none;}
+    .menu-modal{width:100vw; max-width:100vw; height:100vh; height:100dvh; max-height:100vh; max-height:100dvh; border-radius:0; top:0; left:0; transform:none;}
+    .menu-modal.open{transform:none;}
+
+    .cart-drawer{width:100vw; max-width:100vw; height:100vh; max-height:100vh; border-radius:0; top:0; left:0; transform:none;}
+    .cart-drawer.open{transform:none;}
+
+    .cart-fab{display:none;}
+    .toast{bottom:90px; right:16px; left:16px;}
+
+    .foot-grid{grid-template-columns:1fr; gap:36px; margin-bottom:40px;}
+    footer p{max-width:100%;}
+    .foot-bottom{flex-direction:column; gap:8px; text-align:center;}
+
+    .bottom-nav{display:grid;}
+    body{padding-bottom:78px;}
+  }
+  @media(max-width:400px){
+    .wrap{padding:0 16px;}
+    .hero h1{font-size:32px;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .combo-off{font-size:56px;}
+    .insta-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:110px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap nav-inner">
+    <div class="nav-logo">
+      <img src="https://res.cloudinary.com/dmivtuufp/image/upload/v1779011936/4_qvga6r.png" alt="Food District logo">
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#" data-open-menu>Menu</a>
+      <a href="#brands">Brands</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-primary btn-sm">Order Now</a>
+    </div>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <picture>
+      <source media="(max-width:720px)" srcset="https://res.cloudinary.com/dara80vtx/image/upload/v1784663745/57d072b7-6d2f-4482-9f6c-233082aa7c0e_wtsfvz.png">
+      <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784663228/9d2611ba-a85a-442f-b378-54592bc86cc4_eayex1.png" alt="Food District spread">
+    </picture>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <h1>ONE PLACE.<br><span class="line2">ENDLESS CRAVINGS.</span></h1>
+      <p class="sub">Order your favorite Biryani, Butter Chicken, Momos, Kebabs, Kunafa and Beverages from one premium kitchen.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-primary" data-open-menu>Order Now</a>
+        <a href="#" class="btn btn-outline-dark" data-open-menu>Explore Menu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMBO -->
+<section class="section reveal">
+  <div class="wrap">
+    <div class="combo-banner">
+      <div class="combo-text">
+        <div class="eyebrow">Limited Time</div>
+        <h2>Today's Combo</h2>
+        <p style="color:#c9c9c9; font-size:15px; max-width:340px; margin-bottom:26px;">Any Biryani + Drink + Dessert, bundled at one unbeatable price.</p>
+        <a href="#" class="btn btn-gold">Order Now</a>
+      </div>
+      <div class="combo-off">30%<span>OFF TODAY</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED MENU -->
+<section class="section reveal" id="full-menu">
+  <div class="wrap">
+    <div class="explore-head">
+      <h2>Explore Our Menu</h2>
+    </div>
+    <div class="modal-toolbar" style="border:none; padding:0 0 24px;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="modal-tabs" id="homeTabs">
+          <button class="modal-tab active" data-tab="all">Recommended</button>
+          <button class="modal-tab" data-tab="biryani">Biryani</button>
+          <button class="modal-tab" data-tab="curry">North Indian</button>
+          <button class="modal-tab" data-tab="momo">Momos</button>
+          <button class="modal-tab" data-tab="grill">Kebabs</button>
+          <button class="modal-tab" data-tab="kunafa">Desserts</button>
+          <button class="modal-tab" data-tab="drinks">Drinks</button>
+        </div>
+        <button class="modal-filter-btn" id="homeFilterBtn" title="Sort">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-sort" id="homeSortRow" style="display:none;">
+        <label for="homeSortSelect">Sort by</label>
+        <select id="homeSortSelect">
+          <option value="popular">Popularity</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Rating</option>
+          <option value="az">Name: A–Z</option>
+        </select>
+      </div>
+    </div>
+    <div id="homeMenuGrid"></div>
+    <div style="text-align:center; margin-top:40px;">
+      <button class="btn btn-primary" data-open-menu>View Full Menu →</button>
+    </div>
+  </div>
+</section>
+
+<!-- MENU MODAL -->
+<div class="menu-modal-overlay" id="menuModalOverlay"></div>
+<div class="menu-modal" id="menuModal">
+  <div class="modal-header">
+    <div style="width:34px;"></div>
+    <h3 style="flex:1; text-align:center;">MENU</h3>
+    <button class="modal-close-btn" id="modalCloseBtn">✕</button>
+  </div>
+  <div class="modal-toolbar">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div class="modal-tabs" id="modalTabs">
+        <button class="modal-tab active" data-tab="all">Recommended</button>
+        <button class="modal-tab" data-tab="biryani">Biryani</button>
+        <button class="modal-tab" data-tab="curry">North Indian</button>
+        <button class="modal-tab" data-tab="momo">Momos</button>
+        <button class="modal-tab" data-tab="grill">Kebabs</button>
+        <button class="modal-tab" data-tab="kunafa">Desserts</button>
+        <button class="modal-tab" data-tab="drinks">Drinks</button>
+      </div>
+      <button class="modal-filter-btn" id="modalFilterBtn" title="Sort">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-sort" id="modalSortRow" style="display:none;">
+      <label for="modalSortSelect">Sort by</label>
+      <select id="modalSortSelect">
+        <option value="popular">Popularity</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="rating">Rating</option>
+        <option value="az">Name: A–Z</option>
+      </select>
+    </div>
+  </div>
+  <div class="modal-list" id="modalList"></div>
+  <div class="modal-cart-bar" id="modalCartBar">
+    <div class="summary"><b id="modalCartCount">0</b> items · ₹<span id="modalCartTotal">0</span></div>
+    <button id="modalViewCartBtn">View Cart →</button>
+  </div>
+</div>
+
+<!-- FLOATING CART BUTTON -->
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <img id="toastImg" src="" alt="">
+  <div class="toast-text" id="toastText"></div>
+  <span class="toast-view" id="toastView">View Cart</span>
+</div>
+
+<button class="cart-fab" id="cartFab">
+  🛒 <span class="cart-fab-badge" id="cartBadge">0</span>
+</button>
+
+<!-- CART POPUP (checkout) -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3>Your Order</h3>
+    <button class="cart-close" id="cartClose">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">Your cart is empty.<br>Add something delicious 🍽️</div>
+  </div>
+  <div class="cart-footer">
+    <div class="coupon-row">
+      <input type="text" id="couponInput" placeholder="Coupon code (try FD10)">
+      <button id="applyCoupon">Apply</button>
+    </div>
+    <div class="coupon-msg" id="couponMsg"></div>
+    <div class="cart-line"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
+    <div class="cart-line discount-line" id="discountLine" style="display:none;"><span>Discount</span><span id="cartDiscount">-₹0</span></div>
+    <div class="cart-line cart-total"><span>Total</span><span id="cartTotal">₹0</span></div>
+    <button class="btn btn-primary" id="whatsappCheckout" style="width:100%; margin-top:16px;">Order Now 💬</button>
+  </div>
+</aside>
+
+<!-- SIGNATURE BRANDS -->
+<section class="section reveal" id="brands">
+  <div class="wrap">
+    <div class="brands-panel">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">🍲 Signature Kitchens</div>
+          <h2>Unforgettable Flavors.</h2>
+        </div>
+      </div>
+      <div class="brands-carousel">
+        <div class="brand-shield">
+          <div class="shield-icon">🍲</div>
+          <div class="shield-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hyderabadi_Bhiriyani.jpg?width=300" alt="District Biryani"></div>
+          <h3>District Biryani</h3>
+          <p>Authentic Biryani, Royal Taste</p>
+        </div>
+        <div class="brand-shield">
+          <div class="shield-icon">🍛</div>
+          <div class="shield-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Butter_Chicken_Curry.png?width=300" alt="District Curry"></div>
+          <h3>District Curry</h3>
+          <p>Rich &amp; Creamy Curries</p>
+        </div>
+        <div class="brand-shield">
+          <div class="shield-icon">🔥</div>
+          <div class="shield-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Seekh_Kebab.JPG?width=300" alt="District Grill"></div>
+          <h3>District Grill</h3>
+          <p>Grilled to Perfection</p>
+        </div>
+        <div class="brand-shield">
+          <div class="shield-icon">🥟</div>
+          <div class="shield-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Momos.jpg?width=300" alt="District Momo"></div>
+          <h3>District Momo</h3>
+          <p>Steamed, Fried &amp; Pan-Seared</p>
+        </div>
+        <div class="brand-shield">
+          <div class="shield-icon">🍮</div>
+          <div class="shield-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cream_cheese_kunafa.jpg?width=300" alt="District Kunafa"></div>
+          <h3>District Kunafa</h3>
+          <p>Middle-Eastern Desserts, Reimagined</p>
+        </div>
+        <div class="brand-shield">
+          <div class="shield-icon">🥤</div>
+          <div class="shield-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nepalese_Momos.JPG?width=300" alt="District Drinks"></div>
+          <h3>District Drinks</h3>
+          <p>Mojitos, Shakes &amp; Coolers</p>
+        </div>
+      </div>
+      <div class="brands-dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">Loved By Regulars</div><h2>What Our Customers Say</h2></div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-top">
+          <div class="testi-avatar">A</div>
+          <div><div class="testi-name">Ananya R.</div><div class="testi-role">Regular Customer</div></div>
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <p>The biryani tastes exactly like a proper Hyderabadi kitchen — and it's on my table in 15 minutes.</p>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top">
+          <div class="testi-avatar">K</div>
+          <div><div class="testi-name">Kabir S.</div><div class="testi-role">Weekly Orderer</div></div>
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <p>Butter chicken and kunafa in the same order? Food District is the only place that pulls that off well.</p>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top">
+          <div class="testi-avatar">M</div>
+          <div><div class="testi-name">Meera T.</div><div class="testi-role">Office Lunch Group</div></div>
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <p>Consistent quality, every single order. Our whole office switched to Food District for lunch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="section reveal" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">@fooddistrict</div><h2>From Our Instagram</h2></div>
+    </div>
+    <div class="insta-grid">
+      <div class="insta-item tall"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hyderabadi_Bhiriyani.jpg?width=400" alt="Instagram"></div>
+      <div class="insta-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Karim's_Butter_Chicken.jpg?width=400" alt="Instagram"></div>
+      <div class="insta-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Momos.jpg?width=400" alt="Instagram"></div>
+      <div class="insta-item tall"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cream_cheese_kunafa.jpg?width=400" alt="Instagram"></div>
+      <div class="insta-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Seekh_Kebab.JPG?width=400" alt="Instagram"></div>
+      <div class="insta-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nepalese_Momos.JPG?width=400" alt="Instagram"></div>
+      <div class="insta-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_Hyderabadi_Biryani.JPG?width=400" alt="Instagram"></div>
+      <div class="insta-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mutton_Seekh_Kabab.JPG?width=400" alt="Instagram"></div>
+    </div>
+  </div>
+</section>
+
+<!-- APP -->
+<section class="section reveal">
+  <div class="wrap">
+    <div class="app-section">
+      <div class="app-text">
+        <div class="eyebrow">Get The App</div>
+        <h2>Order Faster.<br>Track Live. Earn Rewards.</h2>
+        <div class="app-features">
+          <div class="app-feature"><span class="ic">📱</span> Order directly, skip the wait</div>
+          <div class="app-feature"><span class="ic">📍</span> Track your delivery live</div>
+          <div class="app-feature"><span class="ic">🎁</span> Earn points on every order</div>
+        </div>
+        <div class="app-badges">
+          <div class="app-badge">🍎 App Store</div>
+          <div class="app-badge">▶ Google Play</div>
+        </div>
+      </div>
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div class="ph-title">Your Order</div>
+          <div class="phone-card">Hyderabadi Biryani × 1</div>
+          <div class="phone-card">Mojito × 1</div>
+          <div class="phone-track">🚴 Out for Delivery — 8 min</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="section why-section reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">The District Standard</div><h2>Why Choose Food District</h2></div>
+      <p>Four promises we don't compromise on, on every single order.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-ic">🌿</div>
+        <h3>Fresh Ingredients</h3>
+        <p>Sourced daily, never frozen for storage — every dish starts from scratch.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ic">👨‍🍳</div>
+        <h3>Prepared Fresh Daily</h3>
+        <p>Nothing sits in a warmer. Your order is cooked only after it's placed.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ic">⚡</div>
+        <h3>Fast Delivery</h3>
+        <p>Hot, sealed, and on your table in an average of 15 minutes.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ic">🍽️</div>
+        <h3>Restaurant Quality</h3>
+        <p>Cloud kitchen efficiency, fine-dining consistency, every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<!-- MOBILE BOTTOM NAV -->
+<nav class="bottom-nav" id="bottomNav">
+  <button class="bnav-item active" data-target="top">
+    <span class="bnav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></span>Home
+  </button>
+  <button class="bnav-item" data-open-menu>
+    <span class="bnav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></span>Menu
+  </button>
+  <div class="bnav-order" id="bnavOrder">
+    <div class="order-fab">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v7a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V3"/><path d="M8 12v9"/><path d="M17 3c-1.5 1-2 3-2 5.5S16 13 17 13s2-2.5 2-4.5S18.5 4 17 3z"/><path d="M17 13v8"/></svg>
+    </div>
+    <span class="lbl">Order Food</span>
+  </div>
+  <button class="bnav-item" id="bnavCart">
+    <span class="bnav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2.5 3h2l2.4 12.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H6"/></svg><span class="bnav-cart-badge" id="bnavCartBadge">0</span></span>Cart
+  </button>
+  <button class="bnav-item" data-target="#contact">
+    <span class="bnav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>Contact
+  </button>
+</nav>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">
+          <img src="https://res.cloudinary.com/dmivtuufp/image/upload/v1779011936/4_qvga6r.png" alt="Food District logo">
+          <span>FOOD DISTRICT</span>
+        </div>
+        <p>A modern cloud kitchen serving Biryani, North Indian, Kebabs, Momos, and Kunafa from one premium kitchen — made fresh, delivered fast.</p>
+        <div class="foot-socials"><span>𝕏</span><span>◎</span><span>▶</span><span>f</span></div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <div class="foot-links">
+          <a href="#">Menu</a>
+          <a href="#">About Us</a>
+          <a href="#">Franchise</a>
+          <a href="#">Careers</a>
+        </div>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="foot-links">
+          <a href="#">hello@fooddistrict.com</a>
+          <a href="#">+91 98XXX XXXXX</a>
+          <a href="#">Track Your Order</a>
+        </div>
+      </div>
+      <div>
+        <h4>Stay Updated</h4>
+        <p>Get combo drops and new menu launches first.</p>
+        <div class="newsletter-box">
+          <input type="email" placeholder="Your email">
+          <button>Join</button>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Food District. All rights reserved.</span>
+      <span>Made fresh, every day.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger (mobile nav placeholder toggle)
+  document.querySelector('.hamburger').addEventListener('click', function(){
+    document.querySelector('.nav-links').classList.toggle('open');
+  });
+
+  // Scroll reveal
+  (function(){
+    const items = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+    }, {threshold:0.12});
+    items.forEach(i => obs.observe(i));
+  })();
+
+  // ===== MENU DATA =====
+  const MENU_ITEMS = [
+    { id:'m1', name:'Hyderabadi Dum Biryani', cat:'biryani', price:249, rating:4.9, badge:'Best Seller', spicy:true,
+      desc:'Slow-cooked basmati rice layered with tender marinated chicken and whole spices.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Hyderabad_dum_biriyani.jpg?width=500' },
+    { id:'m2', name:'Mutton Biryani', cat:'biryani', price:299, rating:4.8, badge:'Chef\'s Choice', spicy:true,
+      desc:'Rich, slow-dum mutton biryani finished with saffron and fried onions.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Hyderabadi_Bhiriyani.jpg?width=500' },
+    { id:'m3', name:'Veg Biryani', cat:'biryani', price:199, rating:4.5, badge:'', spicy:false,
+      desc:'Garden vegetables and paneer, dum-cooked with fragrant basmati rice.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_Hyderabadi_Biryani.JPG?width=500' },
+    { id:'m4', name:'Signature Butter Chicken', cat:'curry', price:229, rating:4.8, badge:'Chef\'s Choice', spicy:false,
+      desc:'Tandoor-charred chicken simmered in a velvety tomato-butter gravy.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Butter_chicken_curry_of_Lawson.jpg?width=500' },
+    { id:'m5', name:'Paneer Butter Masala', cat:'curry', price:209, rating:4.6, badge:'', spicy:false,
+      desc:'Cottage cheese cubes in a creamy, mildly-spiced tomato gravy.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Butter_Chicken_Curry.png?width=500' },
+    { id:'m6', name:'Afghani Chicken Kebab', cat:'grill', price:269, rating:4.7, badge:'', spicy:true,
+      desc:'Char-grilled skewers marinated overnight in yogurt, cream and green chilli.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Indian_Chicken_Seekh_Kebab.jpg?width=500' },
+    { id:'m7', name:'Mutton Seekh Kebab', cat:'grill', price:259, rating:4.7, badge:'Best Seller', spicy:true,
+      desc:'Hand-minced mutton skewers, char-grilled over an open flame.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Mutton_Seekh_Kabab.JPG?width=500' },
+    { id:'m8', name:'Chicken Momos', cat:'momo', price:159, rating:4.6, badge:'Best Seller', spicy:false,
+      desc:'Steamed dumplings packed with juicy minced chicken, served with chutney.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Nepalese_Momos.JPG?width=500' },
+    { id:'m9', name:'Veg Momos', cat:'momo', price:139, rating:4.4, badge:'', spicy:false,
+      desc:'Classic steamed vegetable dumplings, served with spicy chutney.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Momos.jpg?width=500' },
+    { id:'m10', name:'Classic Kunafa', cat:'kunafa', price:179, rating:4.8, badge:'Chef\'s Choice', spicy:false,
+      desc:'Crisp shredded pastry, warm sweet cheese centre, pistachio and syrup.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Cream_cheese_kunafa.jpg?width=500' },
+    { id:'m11', name:'Chocolate Kunafa', cat:'kunafa', price:199, rating:4.7, badge:'Best Seller', spicy:false,
+      desc:'Our classic kunafa loaded with molten chocolate and hazelnut.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Kunafa_-_Maraheb_Restaurant,_Bangalore_-_Karnataka_-_PXL2259.jpg?width=500' },
+    { id:'m12', name:'Classic Mojito', cat:'drinks', price:99, rating:4.5, badge:'', spicy:false,
+      desc:'Fresh mint, lime, and soda over ice — the perfect cooler.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Nepalese_Momos.JPG?width=500' },
+    { id:'m13', name:'Watermelon Cooler', cat:'drinks', price:109, rating:4.4, badge:'', spicy:false,
+      desc:'Chilled watermelon juice with a hint of mint and lime.',
+      img:'https://commons.wikimedia.org/wiki/Special:FilePath/Momos.jpg?width=500' },
+  ];
+
+  const CATEGORY_LABELS = { biryani:'Biryani', curry:'North Indian', grill:'Kebabs', momo:'Momos', kunafa:'Desserts', drinks:'Drinks' };
+  const cart = {}; // id -> {item, qty}
+  let activeTab = 'all';
+  let sortBy = 'popular';
+  let homeActiveTab = 'all';
+  let homeSortBy = 'popular';
+  let discount = 0;
+  let couponApplied = '';
+
+  const modalList = document.getElementById('modalList');
+  const homeMenuGrid = document.getElementById('homeMenuGrid');
+  const cartBadge = document.getElementById('cartBadge');
+  const cartItemsEl = document.getElementById('cartItems');
+  const cartEmpty = document.getElementById('cartEmpty');
+  const cartSubtotalEl = document.getElementById('cartSubtotal');
+  const cartTotalEl = document.getElementById('cartTotal');
+  const cartDiscountEl = document.getElementById('cartDiscount');
+  const discountLine = document.getElementById('discountLine');
+
+  function rowControlHTML(item){
+    const inCart = cart[item.id];
+    if(inCart){
+      return `
+        <div class="row-qty-stepper" data-id="${item.id}">
+          <button data-action="dec">−</button>
+          <span>${inCart.qty}</span>
+          <button data-action="inc">+</button>
+        </div>`;
+    }
+    return `<button class="row-add-btn" data-id="${item.id}">ADD +</button>`;
+  }
+
+  function tagHTML(item){
+    if(/veg/i.test(item.name) && !/non.?veg/i.test(item.name)) return `<span class="menu-pop-tag tag-veg">Veg</span>`;
+    if(item.badge === 'Best Seller') return `<span class="menu-pop-tag tag-bestseller">Bestseller</span>`;
+    if(item.badge) return `<span class="menu-pop-tag tag-popular">Popular</span>`;
+    return '';
+  }
+
+  function popCardHTML(item){
+    return `
+      <div class="menu-pop-card">
+        <div class="menu-pop-img">
+          <img src="${item.img}" alt="${item.name}">
+          ${tagHTML(item)}
+        </div>
+        <div class="menu-pop-body">
+          <div class="menu-pop-rating">★ ${item.rating}</div>
+          <h4>${item.name}</h4>
+          <div class="menu-pop-price">₹${item.price}</div>
+          <p class="menu-pop-desc">${item.desc}</p>
+          <div class="row-control" data-card-id="${item.id}">${rowControlHTML(item)}</div>
+        </div>
+      </div>`;
+  }
+
+  function filterAndSort(tab, sort){
+    let filtered = tab === 'all' ? [...MENU_ITEMS] : MENU_ITEMS.filter(i => i.cat === tab);
+    if(sort === 'price-low') filtered.sort((a,b) => a.price - b.price);
+    else if(sort === 'price-high') filtered.sort((a,b) => b.price - a.price);
+    else if(sort === 'rating') filtered.sort((a,b) => b.rating - a.rating);
+    else if(sort === 'az') filtered.sort((a,b) => a.name.localeCompare(b.name));
+    return filtered; // 'popular' keeps original curated order
+  }
+
+  function renderMenu(){
+    const filtered = filterAndSort(activeTab, sortBy);
+    if(activeTab === 'all'){
+      // group by category with headings, like the reference
+      const cats = ['biryani','curry','grill','momo','kunafa','drinks'];
+      modalList.innerHTML = cats.map(cat => {
+        const items = filtered.filter(i => i.cat === cat);
+        if(items.length === 0) return '';
+        return `<div class="modal-cat-heading">${CATEGORY_LABELS[cat]}</div>
+                <div class="menu-card-grid">${items.map(popCardHTML).join('')}</div>`;
+      }).join('');
+    } else {
+      modalList.innerHTML = `<div class="menu-card-grid">${filtered.map(popCardHTML).join('')}</div>`;
+    }
+    bindRowControls(modalList);
+  }
+
+  function renderHomeMenu(){
+    if(!homeMenuGrid) return;
+    const filtered = filterAndSort(homeActiveTab, homeSortBy).slice(0, 8);
+    homeMenuGrid.innerHTML = `<div class="home-menu-grid">${filtered.map(popCardHTML).join('')}</div>`;
+    bindRowControls(homeMenuGrid);
+  }
+
+  function bindRowControls(container){
+    container.querySelectorAll('.row-add-btn').forEach(btn => {
+      btn.addEventListener('click', () => addToCart(btn.dataset.id, btn));
+    });
+    container.querySelectorAll('.row-qty-stepper').forEach(stepper => {
+      const id = stepper.dataset.id;
+      stepper.querySelector('[data-action="inc"]').addEventListener('click', () => { changeQty(id, 1); refreshRowControl(id); });
+      stepper.querySelector('[data-action="dec"]').addEventListener('click', () => { changeQty(id, -1); refreshRowControl(id); });
+    });
+  }
+
+  function refreshRowControl(id){
+    const item = MENU_ITEMS.find(i => i.id === id);
+    if(!item) return;
+    document.querySelectorAll(`.row-control[data-card-id="${id}"]`).forEach(holder => {
+      holder.innerHTML = rowControlHTML(item);
+    });
+    bindRowControls(modalList);
+    if(homeMenuGrid) bindRowControls(homeMenuGrid);
+  }
+
+  function addToCart(id, btnEl){
+    const item = MENU_ITEMS.find(i => i.id === id);
+    if(!item) return;
+    // Adding always starts a fresh line at qty 1; further clicks use the +/- stepper.
+    if(!cart[id]){ cart[id] = { item, qty:1 }; }
+    if(btnEl){
+      btnEl.classList.remove('pulse');
+      void btnEl.offsetWidth;
+      btnEl.classList.add('pulse');
+    }
+    updateCartUI();
+    refreshRowControl(id);
+    showToast(item);
+  }
+
+  function changeQty(id, delta){
+    if(!cart[id]) return;
+    cart[id].qty += delta;
+    if(cart[id].qty <= 0) delete cart[id];
+    updateCartUI();
+  }
+
+  function removeFromCart(id){
+    delete cart[id];
+    updateCartUI();
+    refreshRowControl(id);
+  }
+
+  let toastTimer;
+  function showToast(item){
+    const toast = document.getElementById('toast');
+    document.getElementById('toastImg').src = item.img;
+    document.getElementById('toastText').innerHTML = `<b>${item.name}</b> added to cart`;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+  }
+
+  function getSubtotal(){
+    return Object.values(cart).reduce((sum, c) => sum + c.item.price * c.qty, 0);
+  }
+
+  function updateCartUI(){
+    const entries = Object.entries(cart);
+    const totalQty = entries.reduce((s,[,c]) => s + c.qty, 0);
+    cartBadge.textContent = totalQty;
+    cartBadge.classList.remove('bump');
+    void cartBadge.offsetWidth;
+    cartBadge.classList.add('bump');
+    const bnavBadge = document.getElementById('bnavCartBadge');
+    if(bnavBadge) bnavBadge.textContent = totalQty;
+
+    if(entries.length === 0){
+      cartItemsEl.innerHTML = '';
+      cartItemsEl.appendChild(cartEmpty);
+    } else {
+      cartItemsEl.innerHTML = entries.map(([id, c]) => `
+        <div class="cart-item">
+          <img src="${c.item.img}" alt="${c.item.name}">
+          <div class="cart-item-info">
+            <h4>${c.item.name}</h4>
+            <div class="cart-item-price">₹${c.item.price} × ${c.qty}</div>
+          </div>
+          <div class="qty-control">
+            <button data-action="dec" data-id="${id}">−</button>
+            <span>${c.qty}</span>
+            <button data-action="inc" data-id="${id}">+</button>
+          </div>
+          <button class="cart-remove" data-action="remove" data-id="${id}">✕</button>
+        </div>
+      `).join('');
+      cartItemsEl.querySelectorAll('[data-action="inc"]').forEach(b => b.addEventListener('click', () => { changeQty(b.dataset.id, 1); refreshRowControl(b.dataset.id); }));
+      cartItemsEl.querySelectorAll('[data-action="dec"]').forEach(b => b.addEventListener('click', () => { changeQty(b.dataset.id, -1); refreshRowControl(b.dataset.id); }));
+      cartItemsEl.querySelectorAll('[data-action="remove"]').forEach(b => b.addEventListener('click', () => removeFromCart(b.dataset.id)));
+    }
+
+    const subtotal = getSubtotal();
+    const total = Math.max(0, subtotal - discount);
+    cartSubtotalEl.textContent = '₹' + subtotal;
+    cartTotalEl.textContent = '₹' + total;
+    if(discount > 0){
+      discountLine.style.display = 'flex';
+      cartDiscountEl.textContent = '-₹' + discount;
+    } else {
+      discountLine.style.display = 'none';
+    }
+
+    // sync modal sticky cart bar (only shown inside the menu popup)
+    const modalCartBar = document.getElementById('modalCartBar');
+    if(modalCartBar){
+      document.getElementById('modalCartCount').textContent = totalQty;
+      document.getElementById('modalCartTotal').textContent = total;
+      modalCartBar.classList.toggle('show', totalQty > 0);
+    }
+  }
+
+  // Modal tabs
+  document.querySelectorAll('#modalTabs .modal-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#modalTabs .modal-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activeTab = tab.dataset.tab;
+      renderMenu();
+      modalList.scrollTop = 0;
+    });
+  });
+
+  // Sort by (toggled via filter icon) — modal
+  const modalSortRow = document.getElementById('modalSortRow');
+  const modalFilterBtn = document.getElementById('modalFilterBtn');
+  modalFilterBtn.addEventListener('click', () => {
+    const isOpen = modalSortRow.style.display === 'flex';
+    modalSortRow.style.display = isOpen ? 'none' : 'flex';
+    modalFilterBtn.classList.toggle('active', !isOpen);
+  });
+  document.getElementById('modalSortSelect').addEventListener('change', (e) => {
+    sortBy = e.target.value;
+    renderMenu();
+  });
+
+  // Homepage tabs
+  document.querySelectorAll('#homeTabs .modal-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#homeTabs .modal-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      homeActiveTab = tab.dataset.tab;
+      renderHomeMenu();
+    });
+  });
+
+  // Sort by (toggled via filter icon) — homepage
+  const homeSortRow = document.getElementById('homeSortRow');
+  const homeFilterBtn = document.getElementById('homeFilterBtn');
+  if(homeFilterBtn){
+    homeFilterBtn.addEventListener('click', () => {
+      const isOpen = homeSortRow.style.display === 'flex';
+      homeSortRow.style.display = isOpen ? 'none' : 'flex';
+      homeFilterBtn.classList.toggle('active', !isOpen);
+    });
+    document.getElementById('homeSortSelect').addEventListener('change', (e) => {
+      homeSortBy = e.target.value;
+      renderHomeMenu();
+    });
+  }
+
+  // Menu modal open/close
+  const menuModal = document.getElementById('menuModal');
+  const menuModalOverlay = document.getElementById('menuModalOverlay');
+  function openMenuModal(){
+    menuModal.classList.add('open');
+    menuModalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenuModal(){
+    menuModal.classList.remove('open');
+    menuModalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalCloseBtn').addEventListener('click', closeMenuModal);
+  menuModalOverlay.addEventListener('click', closeMenuModal);
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenuModal(); });
+
+  // Triggers that open the menu modal
+  document.querySelectorAll('[data-open-menu]').forEach(el => {
+    el.addEventListener('click', (e) => { e.preventDefault(); openMenuModal(); });
+  });
+
+  // Modal cart bar -> open cart checkout popup (on top of the menu modal)
+  document.getElementById('modalViewCartBtn').addEventListener('click', () => {
+    openCart();
+  });
+
+  // Cart popup open/close
+  const cartFab = document.getElementById('cartFab');
+  const cartDrawer = document.getElementById('cartDrawer');
+  const cartOverlay = document.getElementById('cartOverlay');
+  function openCart(){
+    cartDrawer.classList.add('open');
+    cartOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCart(){
+    cartDrawer.classList.remove('open');
+    cartOverlay.classList.remove('open');
+    // keep body locked if the menu modal is still open underneath
+    if(!menuModal.classList.contains('open')) document.body.style.overflow = '';
+  }
+  cartFab.addEventListener('click', openCart);
+
+  // Mobile bottom nav
+  (function(){
+    const items = document.querySelectorAll('.bnav-item[data-target]');
+    items.forEach(btn => {
+      btn.addEventListener('click', () => {
+        items.forEach(i => i.classList.remove('active'));
+        btn.classList.add('active');
+        const target = btn.dataset.target;
+        if(target === 'top'){
+          window.scrollTo({top:0, behavior:'smooth'});
+        } else {
+          document.querySelector(target)?.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+    document.getElementById('bnavOrder').addEventListener('click', () => {
+      openMenuModal();
+    });
+    document.getElementById('bnavCart').addEventListener('click', openCart);
+  })();
+  document.getElementById('toastView').addEventListener('click', () => {
+    document.getElementById('toast').classList.remove('show');
+    openCart();
+  });
+  document.getElementById('cartClose').addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeCart(); });
+
+  // Coupon logic
+  const COUPONS = {
+    'FD10': { type:'percent', value:10 }
+  };
+  document.getElementById('applyCoupon').addEventListener('click', () => {
+    const input = document.getElementById('couponInput');
+    const code = input.value.trim().toUpperCase();
+    const msg = document.getElementById('couponMsg');
+    const subtotal = getSubtotal();
+    if(subtotal === 0){
+      msg.textContent = 'Add items to your cart first.';
+      msg.className = 'coupon-msg err';
+      return;
+    }
+    if(COUPONS[code]){
+      const c = COUPONS[code];
+      discount = c.type === 'percent' ? Math.round(subtotal * c.value / 100) : c.value;
+      couponApplied = code;
+      msg.textContent = `"${code}" applied — you saved ₹${discount}!`;
+      msg.className = 'coupon-msg ok';
+    } else {
+      discount = 0;
+      couponApplied = '';
+      msg.textContent = 'Invalid coupon code.';
+      msg.className = 'coupon-msg err';
+    }
+    updateCartUI();
+  });
+
+  // WhatsApp checkout
+  document.getElementById('whatsappCheckout').addEventListener('click', () => {
+    const entries = Object.values(cart);
+    if(entries.length === 0){
+      alert('Your cart is empty — add something first!');
+      return;
+    }
+    const subtotal = getSubtotal();
+    const total = Math.max(0, subtotal - discount);
+    let msg = 'Hi Food District! I\'d like to order:%0A%0A';
+    entries.forEach(c => {
+      msg += `• ${c.item.name} × ${c.qty} — ₹${c.item.price * c.qty}%0A`;
+    });
+    msg += `%0ASubtotal: ₹${subtotal}%0A`;
+    if(discount > 0) msg += `Coupon (${couponApplied}): -₹${discount}%0A`;
+    msg += `Total: ₹${total}%0A%0APlease confirm my order. Thank you!`;
+    const waNumber = '9198XXXXXXXX'; // TODO: replace with your real WhatsApp Business number
+    window.open(`https://wa.me/${waNumber}?text=${msg}`, '_blank');
+  });
+
+  // Initial render
+  renderMenu();
+  renderHomeMenu();
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food District — One Place. Endless Cravings.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E10600;
+    --white:#FFFFFF;
+    --black:#111111;
+    --gray:#F7F7F7;
+    --gold:#FFC72C;
+    --gray-line:#ECECEC;
+    --text-soft:#6b6b6b;
+    --shadow-soft: 0 20px 50px rgba(17,17,17,.08);
+    --shadow-card: 0 14px 34px rgba(17,17,17,.10);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--black);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:.5px;
+    line-height:1;
+    color:var(--black);
+  }
+  a{text-decoration:none; color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1280px; margin:0 auto; padding:0 40px;}
+  .eyebrow{
+    font-family:'Inter',sans-serif; font-weight:800; font-size:12.5px; letter-spacing:3px;
+    text-transform:uppercase; color:var(--red); margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:26px; height:2px; background:var(--red); display:inline-block;}
+  ::selection{background:var(--red); color:#fff;}
+
+  /* ===== NAV ===== */
+  nav.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:200; padding:18px 0;
+    background:rgba(255,255,255,.75); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(17,17,17,.06); transition:all .3s ease;
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between;}
+  .nav-logo{display:flex; align-items:center; gap:10px;}
+  .nav-logo img{height:42px; width:auto;}
+  .nav-logo span{font-family:'Bebas Neue'; font-size:22px; letter-spacing:1px;}
+  .nav-links{display:flex; gap:36px; font-weight:600; font-size:14.5px;}
+  .nav-links a{position:relative; padding:6px 0; transition:color .2s ease;}
+  .nav-links a:hover{color:var(--red);}
+  .nav-cta{
+    display:flex; align-items:center; gap:14px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 30px; border-radius:100px; font-weight:700; font-size:14.5px; cursor:pointer;
+    border:none; transition:transform .25s cubic-bezier(.2,.9,.3,1), box-shadow .25s ease, background .25s ease;
+    position:relative; overflow:hidden;
+  }
+  .btn-primary{background:var(--red); color:#fff; box-shadow:0 12px 26px rgba(225,6,0,.28);}
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 18px 34px rgba(225,6,0,.36);}
+  .btn-dark{background:var(--black); color:#fff;}
+  .btn-dark:hover{background:#000; transform:translateY(-3px);}
+  .btn-outline{background:transparent; color:var(--black); border:1.5px solid rgba(17,17,17,.18);}
+  .btn-outline:hover{border-color:var(--black); transform:translateY(-3px);}
+  .btn-gold{background:var(--gold); color:var(--black);}
+  .btn-sm{padding:10px 20px; font-size:13px;}
+  .hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer;}
+  .hamburger span{width:24px; height:2.5px; background:var(--black); border-radius:2px;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative; min-height:100vh; display:flex; align-items:flex-start;
+    padding:150px 0 0; overflow:hidden;
+  }
+  .hero-bg{position:absolute; inset:0; z-index:0;}
+  .hero-bg img{width:100%; height:100%; object-fit:cover; object-position:center top;}
+  .hero-bg::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.15) 30%, transparent 55%);
+  }
+  .hero-grid{display:flex; justify-content:center; position:relative; z-index:2; width:100%;}
+  .hero-grid > div{max-width:800px; text-align:center;}
+  .hero-badge{margin-left:auto; margin-right:auto;}
+  .hero p.sub{margin-left:auto; margin-right:auto;}
+  .hero-ctas{justify-content:center;}
+  .hero-badge{
+    display:inline-flex; align-items:center; gap:8px; background:#fff; box-shadow:var(--shadow-card);
+    color:var(--black); padding:8px 16px 8px 8px; border-radius:100px; font-size:12.5px; font-weight:700; margin-bottom:24px;
+  }
+  .hero-badge .dot{width:22px; height:22px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; font-size:12px;}
+  .hero h1{
+    font-size:88px; letter-spacing:0px; margin-bottom:22px; color:var(--black); text-shadow:0 2px 30px rgba(255,255,255,.6);
+  }
+  .hero h1 .line2{
+    color:var(--red); text-shadow:0 2px 30px rgba(255,255,255,.4);
+  }
+  .hero p.sub{
+    font-size:16.5px; color:#333; max-width:520px; line-height:1.7; margin-bottom:30px; font-weight:600;
+  }
+  .hero p.sub b{color:var(--black);}
+  .hero-ctas{display:flex; gap:16px; margin-bottom:0;}
+  .btn-outline-dark{
+    background:#fff; color:var(--black); border:1.5px solid rgba(17,17,17,.15); box-shadow:var(--shadow-card);
+  }
+  .btn-outline-dark:hover{border-color:var(--black); transform:translateY(-3px);}
+
+  /* ===== SECTION HEAD ===== */
+  .section{padding:110px 0;}
+  .section-head{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:56px; gap:30px;}
+  .section-head h2{font-size:56px;}
+  .section-head p{color:var(--text-soft); font-size:15.5px; max-width:380px; font-weight:500;}
+
+  /* ===== CATEGORIES ===== */
+  .cat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:26px;}
+  .cat-card{
+    position:relative; border-radius:24px; overflow:hidden; height:320px; cursor:pointer;
+    box-shadow:var(--shadow-card); transition:transform .35s ease;
+  }
+  .cat-card:hover{transform:translateY(-8px);}
+  .cat-card img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .cat-card:hover img{transform:scale(1.1);}
+  .cat-overlay{
+    position:absolute; inset:0; background:linear-gradient(0deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.1) 55%, transparent 75%);
+    display:flex; flex-direction:column; justify-content:flex-end; padding:24px; color:#fff;
+  }
+  .cat-overlay h3{font-family:'Inter'; font-weight:800; font-size:19px; margin-bottom:4px;}
+  .cat-overlay .price{font-size:13px; color:#e8e8e8; margin-bottom:14px;}
+  .cat-arrow{
+    width:38px; height:38px; border-radius:50%; background:var(--gold); color:var(--black);
+    display:flex; align-items:center; justify-content:center; font-size:16px; transition:transform .3s ease;
+  }
+  .cat-card:hover .cat-arrow{transform:rotate(45deg);}
+
+  /* ===== WHY CHOOSE ===== */
+  .why-section{background:var(--gray);}
+  .why-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:26px; max-width:760px; margin:0 auto;}
+  .why-card{
+    background:#fff; border-radius:22px; padding:36px 28px; box-shadow:var(--shadow-card);
+    transition:transform .3s ease;
+  }
+  .why-card:hover{transform:translateY(-6px);}
+  .why-ic{
+    width:58px; height:58px; border-radius:16px; background:var(--black); color:var(--gold);
+    display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:22px;
+  }
+  .why-card h3{font-family:'Inter'; font-weight:800; font-size:17px; margin-bottom:10px;}
+  .why-card p{color:var(--text-soft); font-size:14px; line-height:1.7;}
+
+  /* ===== FEATURED MENU ===== */
+  .menu-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .menu-card{
+    background:#fff; border-radius:24px; overflow:hidden; box-shadow:var(--shadow-card);
+    transition:transform .3s ease;
+  }
+  .menu-card:hover{transform:translateY(-8px);}
+  .menu-img{position:relative; height:230px;}
+  .menu-img img{width:100%; height:100%; object-fit:cover;}
+  .menu-labels{position:absolute; top:14px; left:14px; display:flex; gap:6px;}
+  .label{font-size:10.5px; font-weight:800; padding:5px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:.4px;}
+  .label-bestseller{background:var(--gold); color:var(--black);}
+  .label-spicy{background:var(--red); color:#fff;}
+  .fav-btn{
+    position:absolute; top:14px; right:14px; width:34px; height:34px; border-radius:50%;
+    background:rgba(255,255,255,.92); display:flex; align-items:center; justify-content:center; font-size:15px; cursor:pointer;
+  }
+  .menu-body{padding:22px;}
+  .menu-top{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;}
+  .menu-body h3{font-family:'Inter'; font-weight:800; font-size:18px;}
+  .rating{font-size:12.5px; color:var(--gold); font-weight:700; display:flex; align-items:center; gap:4px;}
+  .rating span{color:var(--black);}
+  .menu-body p.desc{color:var(--text-soft); font-size:13.5px; line-height:1.6; margin-bottom:18px;}
+  .menu-bottom{display:flex; justify-content:space-between; align-items:center; gap:10px;}
+  .menu-price{font-family:'Bebas Neue'; font-size:26px; color:var(--red); white-space:nowrap;}
+  .add-to-cart-btn{
+    display:flex; align-items:center; gap:8px; background:var(--black); color:#fff; border:none;
+    padding:11px 18px; border-radius:100px; font-weight:700; font-size:13px; cursor:pointer;
+    transition:background .2s ease, transform .2s ease; font-family:'Inter'; white-space:nowrap;
+  }
+  .add-to-cart-btn:hover{background:var(--red); transform:translateY(-2px);}
+  .add-to-cart-btn.pulse{animation:addPulse .4s ease;}
+  .card-qty-stepper{
+    display:flex; align-items:center; gap:0; background:var(--gray); border-radius:100px; overflow:hidden;
+    animation:cardIn .3s ease;
+  }
+  .card-qty-stepper button{
+    background:none; border:none; width:36px; height:36px; font-size:16px; font-weight:700; cursor:pointer;
+    color:var(--black); transition:background .2s ease;
+  }
+  .card-qty-stepper button:hover{background:rgba(225,6,0,.1); color:var(--red);}
+  .card-qty-stepper span{font-weight:800; font-size:14px; min-width:22px; text-align:center;}
+
+  /* ===== TOAST ===== */
+  .toast{
+    position:fixed; bottom:110px; right:28px; z-index:310; background:var(--black); color:#fff;
+    padding:14px 20px; border-radius:14px; display:flex; align-items:center; gap:14px; font-size:13.5px;
+    font-weight:600; box-shadow:0 16px 34px rgba(0,0,0,.25);
+    transform:translateY(20px); opacity:0; visibility:hidden; transition:all .3s ease;
+  }
+  .toast.show{transform:translateY(0); opacity:1; visibility:visible;}
+  .toast img{width:38px; height:38px; border-radius:8px; object-fit:cover;}
+  .toast-text b{color:var(--gold);}
+  .toast-view{color:var(--gold); font-weight:800; cursor:pointer; white-space:nowrap;}
+  @keyframes addPulse{
+    0%{transform:scale(1);}
+    40%{transform:scale(1.35); background:var(--gold); color:#111;}
+    100%{transform:scale(1);}
+  }
+
+  .menu-card{animation:cardIn .5s ease both; animation-play-state:paused;}
+  .menu-grid.grid-in .menu-card{animation-play-state:running;}
+  .cat-card, .why-card, .brand-card{animation:cardIn .6s ease both; animation-play-state:paused;}
+  .reveal.in .cat-card, .reveal.in .why-card, .reveal.in .brand-card{animation-play-state:running;}
+  .menu-grid .menu-card:nth-child(1),.reveal.in .cat-grid .cat-card:nth-child(1),.reveal.in .why-grid .why-card:nth-child(1),.reveal.in .brands-strip .brand-card:nth-child(1){animation-delay:.02s;}
+  .menu-grid .menu-card:nth-child(2),.reveal.in .cat-grid .cat-card:nth-child(2),.reveal.in .why-grid .why-card:nth-child(2),.reveal.in .brands-strip .brand-card:nth-child(2){animation-delay:.09s;}
+  .menu-grid .menu-card:nth-child(3),.reveal.in .cat-grid .cat-card:nth-child(3),.reveal.in .why-grid .why-card:nth-child(3),.reveal.in .brands-strip .brand-card:nth-child(3){animation-delay:.16s;}
+  .menu-grid .menu-card:nth-child(4),.reveal.in .cat-grid .cat-card:nth-child(4),.reveal.in .why-grid .why-card:nth-child(4),.reveal.in .brands-strip .brand-card:nth-child(4){animation-delay:.23s;}
+  .menu-grid .menu-card:nth-child(5),.reveal.in .cat-grid .cat-card:nth-child(5),.reveal.in .brands-strip .brand-card:nth-child(5){animation-delay:.30s;}
+  .menu-grid .menu-card:nth-child(6),.reveal.in .cat-grid .cat-card:nth-child(6),.reveal.in .brands-strip .brand-card:nth-child(6){animation-delay:.37s;}
+  @keyframes cardIn{
+    from{opacity:0; transform:translateY(26px) scale(.97);}
+    to{opacity:1; transform:translateY(0) scale(1);}
+  }
+
+  /* ===== EXPLORE MENU (homepage) ===== */
+  .explore-head{text-align:center; margin-bottom:30px;}
+  .explore-head h2{font-size:42px;}
+  .home-menu-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+
+  /* ===== CART FAB ===== */
+  .cart-fab{
+    position:fixed; bottom:28px; right:28px; z-index:300; background:var(--red); color:#fff; border:none;
+    width:64px; height:64px; border-radius:50%; font-size:24px; cursor:pointer;
+    box-shadow:0 16px 34px rgba(225,6,0,.4); display:flex; align-items:center; justify-content:center;
+    transition:transform .25s ease;
+  }
+  .cart-fab:hover{transform:scale(1.08);}
+  .cart-fab-badge{
+    position:absolute; top:-4px; right:-4px; background:var(--gold); color:#111; font-size:12px; font-weight:800;
+    width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    border:2px solid #fff; transition:transform .2s ease;
+  }
+  .cart-fab-badge.bump{animation:bump .35s ease;}
+  @keyframes bump{
+    0%{transform:scale(1);} 50%{transform:scale(1.5);} 100%{transform:scale(1);}
+  }
+
+  /* ===== FULL MENU MODAL (Swiggy-style) ===== */
+  .menu-modal-overlay{
+    position:fixed; inset:0; background:rgba(17,17,17,.55); z-index:450; opacity:0; visibility:hidden;
+    transition:opacity .3s ease, visibility .3s ease;
+  }
+  .menu-modal-overlay.open{opacity:1; visibility:visible;}
+  .menu-modal{
+    position:fixed; z-index:460; background:#fff; display:flex; flex-direction:column;
+    left:50%; top:50%; width:640px; max-width:92vw; height:85vh; max-height:800px;
+    border-radius:24px; transform:translate(-50%,-50%) scale(.96); opacity:0; visibility:hidden;
+    transition:opacity .3s ease, transform .3s ease, visibility .3s ease;
+    box-shadow:0 40px 90px rgba(0,0,0,.35); overflow:hidden;
+  }
+  .menu-modal.open{opacity:1; visibility:visible; transform:translate(-50%,-50%) scale(1);}
+  .modal-header{
+    display:flex; align-items:center; justify-content:space-between; padding:20px 24px; border-bottom:1px solid var(--gray-line);
+    flex:none;
+  }
+  .modal-brand{display:flex; align-items:center; gap:12px;}
+  .modal-brand img{width:42px; height:42px; border-radius:10px; object-fit:cover;}
+  .modal-brand h3{font-family:'Bebas Neue'; font-size:22px; line-height:1;}
+  .modal-brand span{font-size:12px; color:var(--text-soft); font-weight:600;}
+  .modal-close-btn{
+    width:34px; height:34px; border-radius:50%; background:var(--gray); border:none; font-size:15px; cursor:pointer;
+    flex:none;
+  }
+  .modal-toolbar{padding:14px 24px; border-bottom:1px solid var(--gray-line); flex:none;}
+  .modal-tabs{display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; -webkit-overflow-scrolling:touch; flex:1;}
+  .modal-tabs::-webkit-scrollbar{display:none;}
+  .modal-tab{
+    flex:none; padding:8px 16px; border-radius:100px; border:1.5px solid rgba(17,17,17,.14); background:#fff;
+    font-weight:700; font-size:12.5px; cursor:pointer; white-space:nowrap; transition:all .2s ease;
+  }
+  .modal-tab.active{background:var(--red); border-color:var(--red); color:#fff;}
+  .modal-filter-btn{
+    flex:none; width:36px; height:36px; border-radius:10px; border:1.5px solid rgba(17,17,17,.14); background:#fff;
+    display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--black); transition:all .2s ease;
+  }
+  .modal-filter-btn:hover, .modal-filter-btn.active{background:var(--black); color:#fff; border-color:var(--black);}
+  .modal-sort{display:flex; align-items:center; gap:8px; margin-top:10px;}
+  .modal-sort label{font-size:11.5px; font-weight:700; color:var(--text-soft);}
+  .modal-sort select{
+    flex:1; padding:8px 12px; border-radius:8px; border:1px solid var(--gray-line); font-size:12px;
+    font-family:'Inter'; font-weight:600; outline:none;
+  }
+  .modal-list{flex:1; overflow-y:auto; padding:18px 24px 24px; background:var(--gray);}
+  .modal-cat-heading{
+    font-family:'Bebas Neue'; font-size:20px; padding:14px 0 10px; letter-spacing:.5px; grid-column:1/-1;
+  }
+  .menu-card-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .menu-pop-card{
+    background:#fff; border-radius:16px; padding:10px; display:flex; gap:12px; position:relative;
+    box-shadow:0 6px 18px rgba(17,17,17,.06); transition:transform .2s ease;
+  }
+  .menu-pop-card:hover{transform:translateY(-3px);}
+  .menu-pop-img{position:relative; flex:none; width:96px; height:96px; border-radius:12px; overflow:hidden;}
+  .menu-pop-img img{width:100%; height:100%; object-fit:cover;}
+  .menu-pop-tag{
+    position:absolute; bottom:6px; left:6px; font-size:8.5px; font-weight:800; letter-spacing:.3px;
+    padding:3px 7px; border-radius:6px; text-transform:uppercase;
+  }
+  .tag-bestseller{background:var(--gold); color:#111;}
+  .tag-popular{background:var(--red); color:#fff;}
+  .tag-veg{background:#1a8a3d; color:#fff;}
+  .menu-pop-body{flex:1; min-width:0; display:flex; flex-direction:column;}
+  .menu-pop-rating{
+    align-self:flex-end; background:#e8f7ec; color:#1a8a3d; font-size:10.5px; font-weight:800;
+    padding:3px 8px; border-radius:6px; display:flex; align-items:center; gap:3px; margin-bottom:4px;
+  }
+  .menu-pop-body h4{font-size:13.5px; font-weight:800; font-family:'Inter'; line-height:1.25; margin-bottom:4px; padding-right:4px;}
+  .menu-pop-price{font-size:13px; font-weight:800; color:var(--red); margin-bottom:4px;}
+  .menu-pop-desc{
+    font-size:10.5px; color:var(--text-soft); line-height:1.4; display:-webkit-box; -webkit-line-clamp:2;
+    -webkit-box-orient:vertical; overflow:hidden; margin-bottom:8px; flex:1;
+  }
+  .row-control{align-self:flex-end; margin-top:auto;}
+  .row-add-btn{
+    background:var(--red); color:#fff; border:none; padding:6px 20px; border-radius:8px;
+    font-weight:800; font-size:11.5px; cursor:pointer; transition:all .2s ease; box-shadow:0 4px 10px rgba(225,6,0,.25);
+  }
+  .row-add-btn:hover{background:#a30400;}
+  .row-add-btn.pulse{animation:addPulse .4s ease;}
+  .row-qty-stepper{
+    display:flex; align-items:center; background:var(--red); border-radius:8px; overflow:hidden;
+  }
+  .row-qty-stepper button{
+    background:none; border:none; width:26px; height:26px; color:#fff; font-size:13px; font-weight:700; cursor:pointer;
+  }
+  .row-qty-stepper span{color:#fff; font-weight:800; font-size:12px; min-width:14px; text-align:center;}
+  .modal-cart-bar{
+    display:none; align-items:center; justify-content:space-between; gap:14px; background:var(--black); color:#fff;
+    padding:16px 22px; flex:none; animation:cardIn .3s ease;
+  }
+  .modal-cart-bar.show{display:flex;}
+  .modal-cart-bar .summary{font-size:13.5px; font-weight:700;}
+  .modal-cart-bar .summary b{color:var(--gold);}
+  .modal-cart-bar button{
+    background:var(--gold); color:#111; border:none; padding:11px 22px; border-radius:10px; font-weight:800;
+    font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px;
+  }
+
+  /* ===== CART POPUP (checkout modal) ===== */
+  .cart-overlay{
+    position:fixed; inset:0; background:rgba(17,17,17,.55); z-index:470; opacity:0; visibility:hidden;
+    transition:opacity .3s ease, visibility .3s ease;
+  }
+  .cart-overlay.open{opacity:1; visibility:visible;}
+  .cart-drawer{
+    position:fixed; z-index:480; background:#fff; display:flex; flex-direction:column;
+    left:50%; top:50%; width:420px; max-width:92vw; height:auto; max-height:85vh;
+    border-radius:24px; transform:translate(-50%,-50%) scale(.96); opacity:0; visibility:hidden;
+    transition:opacity .3s ease, transform .3s ease, visibility .3s ease;
+    box-shadow:0 40px 90px rgba(0,0,0,.35); overflow:hidden;
+  }
+  .cart-drawer.open{opacity:1; visibility:visible; transform:translate(-50%,-50%) scale(1);}
+  .cart-head{display:flex; justify-content:space-between; align-items:center; padding:22px 24px; border-bottom:1px solid var(--gray-line); flex:none;}
+  .cart-head h3{font-family:'Bebas Neue'; font-size:26px;}
+  .cart-close{background:var(--gray); border:none; width:34px; height:34px; border-radius:50%; font-size:15px; cursor:pointer;}
+  .cart-items{flex:1; overflow-y:auto; padding:16px 24px; min-height:0;}
+  .cart-empty{color:var(--text-soft); text-align:center; padding:60px 10px; font-size:14.5px; line-height:1.8;}
+  .cart-item{display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--gray-line); align-items:center; animation:cardIn .3s ease;}
+  .cart-item img{width:60px; height:60px; border-radius:12px; object-fit:cover; flex:none;}
+  .cart-item-info{flex:1;}
+  .cart-item-info h4{font-size:14px; font-weight:800; margin-bottom:4px;}
+  .cart-item-price{font-size:13px; color:var(--red); font-weight:700;}
+  .qty-control{display:flex; align-items:center; gap:10px;}
+  .qty-control button{
+    width:26px; height:26px; border-radius:50%; border:1px solid var(--gray-line); background:#fff;
+    cursor:pointer; font-size:13px; display:flex; align-items:center; justify-content:center;
+  }
+  .qty-control button:hover{border-color:var(--red); color:var(--red);}
+  .qty-control span{font-size:13.5px; font-weight:700; min-width:16px; text-align:center;}
+  .cart-remove{background:none; border:none; color:#bbb; font-size:16px; cursor:pointer; margin-left:6px;}
+  .cart-remove:hover{color:var(--red);}
+  .cart-footer{padding:18px 24px 24px; border-top:1px solid var(--gray-line); flex:none;}
+  .coupon-row{display:flex; gap:8px; margin-bottom:8px;}
+  .coupon-row input{
+    flex:1; padding:11px 14px; border-radius:8px; border:1px solid var(--gray-line); font-size:13px; outline:none;
+    font-family:'Inter';
+  }
+  .coupon-row input:focus{border-color:var(--red);}
+  .coupon-row button{
+    background:var(--black); color:#fff; border:none; padding:0 18px; border-radius:8px; font-weight:700;
+    font-size:12.5px; cursor:pointer;
+  }
+  .coupon-msg{font-size:12px; margin-bottom:10px; min-height:14px; font-weight:600;}
+  .coupon-msg.ok{color:#1a8a3d;}
+  .coupon-msg.err{color:var(--red);}
+  .cart-line{display:flex; justify-content:space-between; font-size:14px; color:var(--text-soft); padding:5px 0;}
+  .discount-line span:last-child{color:#1a8a3d; font-weight:700;}
+  .cart-total{font-weight:800; font-size:17px; color:var(--black); border-top:1px solid var(--gray-line); margin-top:8px; padding-top:12px;}
+
+  /* ===== SIGNATURE BRANDS (shield carousel) ===== */
+  .brands-panel{
+    background:linear-gradient(155deg,#c40500 0%, var(--red) 45%, #8a0300 100%);
+    border-radius:32px; padding:64px 20px 46px; position:relative; overflow:hidden;
+  }
+  .brands-panel::before{
+    content:""; position:absolute; top:-120px; left:-100px; width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle, rgba(255,255,255,.10), transparent 70%);
+  }
+  .brands-panel::after{
+    content:""; position:absolute; bottom:-140px; right:-100px; width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle, rgba(255,199,44,.14), transparent 70%);
+  }
+  .brands-panel .section-head{justify-content:center; text-align:center; flex-direction:column; align-items:center; gap:8px; margin-bottom:10px; position:relative; z-index:2;}
+  .brands-panel .eyebrow{color:var(--gold); justify-content:center;}
+  .brands-panel .eyebrow::before{background:var(--gold);}
+  .brands-panel h2{color:#fff;}
+  .brands-panel .section-head p{color:rgba(255,255,255,.75); max-width:460px;}
+  .brands-carousel{
+    display:flex; gap:22px; overflow-x:auto; padding:34px 10px 12px; scroll-snap-type:x mandatory;
+    scrollbar-width:none; position:relative; z-index:2;
+  }
+  .brands-carousel::-webkit-scrollbar{display:none;}
+  .brand-shield{
+    flex:none; scroll-snap-align:start; width:220px; background:#fff;
+    clip-path:polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
+    padding:56px 18px 48px; text-align:center; position:relative; box-shadow:0 24px 44px rgba(0,0,0,.28);
+    transition:transform .3s ease;
+  }
+  .brand-shield:hover{transform:translateY(-6px);}
+  .shield-icon{
+    position:absolute; top:16px; left:50%; transform:translateX(-50%); width:36px; height:36px; border-radius:50%;
+    background:var(--gold); color:#111; display:flex; align-items:center; justify-content:center; font-size:16px;
+    box-shadow:0 6px 14px rgba(0,0,0,.2);
+  }
+  .shield-photo{
+    width:92px; height:92px; border-radius:50%; overflow:hidden; margin:0 auto 16px; border:4px solid var(--gray);
+    box-shadow:0 10px 22px rgba(0,0,0,.18);
+  }
+  .shield-photo img{width:100%; height:100%; object-fit:cover;}
+  .brand-shield h3{font-family:'Inter'; font-weight:800; font-size:15px; letter-spacing:.3px; margin-bottom:6px; color:var(--black);}
+  .brand-shield p{font-size:11.5px; color:var(--text-soft); font-weight:600; line-height:1.5;}
+  .brands-dots{display:flex; justify-content:center; gap:8px; margin-top:6px; position:relative; z-index:2;}
+  .brands-dots span{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.35);}
+  .brands-dots span:first-child{background:var(--gold); width:18px; border-radius:4px;}
+
+  /* ===== COMBO BANNER ===== */
+  .combo-banner{
+    background:linear-gradient(120deg, var(--black) 0%, #2a2a2a 100%);
+    border-radius:32px; padding:70px 60px; display:flex; align-items:center; justify-content:space-between;
+    position:relative; overflow:hidden;
+  }
+  .combo-banner::before{
+    content:""; position:absolute; top:-80px; right:-80px; width:300px; height:300px; border-radius:50%;
+    background:radial-gradient(circle, rgba(255,199,44,.25), transparent 70%);
+  }
+  .combo-text{position:relative; z-index:2;}
+  .combo-text .eyebrow{color:var(--gold);}
+  .combo-text .eyebrow::before{background:var(--gold);}
+  .combo-text h2{color:#fff; font-size:52px; margin-bottom:10px;}
+  .combo-off{
+    font-family:'Bebas Neue'; font-size:120px; color:var(--gold); line-height:.9; position:relative; z-index:2;
+  }
+  .combo-off span{font-size:28px; display:block; color:#fff; font-family:'Inter'; font-weight:700; margin-top:6px;}
+
+  /* ===== TESTIMONIALS ===== */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .testi-card{
+    background:rgba(255,255,255,.6); backdrop-filter:blur(16px); border:1px solid rgba(17,17,17,.06);
+    border-radius:22px; padding:32px; box-shadow:var(--shadow-card);
+  }
+  .testi-top{display:flex; align-items:center; gap:14px; margin-bottom:18px;}
+  .testi-avatar{width:48px; height:48px; border-radius:50%; background:var(--black); color:var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue'; font-size:18px;}
+  .testi-name{font-weight:800; font-size:14.5px;}
+  .testi-role{font-size:12px; color:var(--text-soft);}
+  .testi-stars{color:var(--gold); font-size:14px; margin-bottom:14px;}
+  .testi-card p{font-size:14.5px; line-height:1.75; color:#333; font-style:italic;}
+
+  /* ===== INSTAGRAM ===== */
+  .insta-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); grid-auto-rows:160px; gap:12px;
+  }
+  .insta-item{border-radius:14px; overflow:hidden; position:relative; cursor:pointer;}
+  .insta-item.tall{grid-row:span 2;}
+  .insta-item img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
+  .insta-item:hover img{transform:scale(1.1);}
+  .insta-item::after{
+    content:"📷"; position:absolute; inset:0; background:rgba(225,6,0,0); display:flex; align-items:center;
+    justify-content:center; font-size:22px; opacity:0; transition:all .3s ease; color:#fff;
+  }
+  .insta-item:hover::after{background:rgba(225,6,0,.55); opacity:1;}
+
+  /* ===== APP SECTION ===== */
+  .app-section{
+    background:var(--black); border-radius:40px; overflow:hidden; position:relative;
+    display:grid; grid-template-columns:1fr 1fr; align-items:center; padding:0 60px;
+  }
+  .app-text{color:#fff; padding:70px 0;}
+  .app-text .eyebrow{color:var(--gold);} .app-text .eyebrow::before{background:var(--gold);}
+  .app-text h2{font-size:48px; color:#fff; margin-bottom:20px;}
+  .app-features{display:flex; flex-direction:column; gap:16px; margin:28px 0 34px;}
+  .app-feature{display:flex; align-items:center; gap:14px; font-size:14.5px; font-weight:600;}
+  .app-feature .ic{width:34px; height:34px; border-radius:10px; background:rgba(255,199,44,.15); color:var(--gold); display:flex; align-items:center; justify-content:center; font-size:15px;}
+  .app-badges{display:flex; gap:14px;}
+  .app-badge{background:#fff; color:var(--black); padding:12px 22px; border-radius:12px; font-weight:700; font-size:13.5px; display:flex; align-items:center; gap:8px;}
+  .phone-mockup{
+    justify-self:center; width:250px; height:510px; background:#1c1c1c; border-radius:42px; padding:14px;
+    box-shadow:0 40px 80px rgba(0,0,0,.5); position:relative; margin-top:40px;
+  }
+  .phone-screen{
+    width:100%; height:100%; border-radius:30px; background:linear-gradient(160deg,#E10600,#111 70%);
+    display:flex; flex-direction:column; padding:26px 18px; color:#fff;
+  }
+  .phone-screen .ph-title{font-family:'Bebas Neue'; font-size:22px; margin-bottom:16px;}
+  .phone-card{background:rgba(255,255,255,.12); border-radius:14px; padding:12px; margin-bottom:10px; font-size:11.5px; font-weight:600;}
+  .phone-track{margin-top:auto; background:var(--gold); color:#111; border-radius:14px; padding:14px; font-size:12px; font-weight:800; text-align:center;}
+
+  /* ===== MOBILE BOTTOM NAV ===== */
+  .bottom-nav{
+    display:none; position:fixed; left:0; right:0; bottom:0; z-index:280;
+    background:#fff; border-top:1px solid var(--gray-line); box-shadow:0 -8px 24px rgba(0,0,0,.08);
+    padding:10px 6px 8px;
+    grid-template-columns:1fr 1fr 1.1fr 1fr 1fr; align-items:end;
+  }
+  .bnav-item{
+    display:flex; flex-direction:column; align-items:center; gap:4px; font-size:10.5px; font-weight:700;
+    color:#9a9a9a; background:none; border:none; cursor:pointer; padding:6px 0; position:relative;
+  }
+  .bnav-item .bnav-ic{width:22px; height:22px; display:flex; align-items:center; justify-content:center; position:relative;}
+  .bnav-item .bnav-ic svg{width:21px; height:21px;}
+  .bnav-item.active{color:var(--red);}
+  .bnav-cart-badge{
+    position:absolute; top:-5px; right:-7px; background:var(--gold); color:#111; font-size:9px; font-weight:800;
+    width:15px; height:15px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    border:1.5px solid #fff;
+  }
+  .bnav-order{
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:6px; margin-top:-30px;
+  }
+  .bnav-order .order-fab{
+    width:56px; height:56px; border-radius:50%; background:linear-gradient(140deg, var(--red), #a30400);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 24px rgba(225,6,0,.45); border:4px solid #fff; transition:transform .25s ease;
+  }
+  .bnav-order:active .order-fab{transform:scale(.92);}
+  .bnav-order span.lbl{font-size:10.5px; font-weight:800; color:var(--red);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--black); color:#c9c9c9; padding:80px 0 30px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:50px; margin-bottom:60px;}
+  .foot-logo{display:flex; align-items:center; gap:10px; margin-bottom:20px;}
+  .foot-logo img{height:38px;}
+  .foot-logo span{font-family:'Bebas Neue'; font-size:22px; color:#fff;}
+  footer p{font-size:14px; line-height:1.8; color:#9c9c9c; max-width:280px;}
+  footer h4{color:#fff; font-family:'Inter'; font-weight:800; font-size:14.5px; margin-bottom:22px; text-transform:uppercase; letter-spacing:1px;}
+  .foot-links{display:flex; flex-direction:column; gap:13px;}
+  .foot-links a{font-size:14px; color:#9c9c9c; transition:color .2s ease;}
+  .foot-links a:hover{color:var(--gold);}
+  .newsletter-box{display:flex; margin-top:16px; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,.15);}
+  .newsletter-box input{flex:1; background:transparent; border:none; padding:13px 14px; color:#fff; font-size:13.5px; outline:none;}
+  .newsletter-box button{background:var(--red); color:#fff; border:none; padding:0 20px; font-weight:700; cursor:pointer;}
+  .foot-socials{display:flex; gap:12px; margin-top:20px;}
+  .foot-socials span{
+    width:36px; height:36px; border-radius:50%; border:1px solid rgba(255,255,255,.18);
+    display:flex; align-items:center; justify-content:center; font-size:14px; color:#fff;
+  }
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,.1); padding-top:24px; display:flex; justify-content:space-between;
+    font-size:13px; color:#7c7c7c;
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal{opacity:0; transform:translateY(32px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:1100px){
+    .hero h1{font-size:64px;}
+    .cat-grid, .why-grid{grid-template-columns:repeat(2,1fr);}
+    .menu-grid{grid-template-columns:repeat(2,1fr);}
+    .stats-grid{grid-template-columns:repeat(3,1fr); row-gap:34px;}
+    .app-section{grid-template-columns:1fr; padding:50px 40px;}
+    .phone-mockup{margin-bottom:20px;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .insta-grid{grid-template-columns:repeat(3,1fr);}
+    .home-menu-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:720px){
+    .wrap{padding:0 20px;}
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .nav-cta{display:none;}
+    .nav-inner{gap:10px;}
+
+    .hero{padding:100px 0 0; min-height:80vh; padding-bottom:60px; align-items:flex-start;}
+    .hero h1{font-size:38px; letter-spacing:0; margin-bottom:16px;}
+    .hero p.sub{font-size:14.5px; padding:0 4px; margin-bottom:22px;}
+    .hero-ctas{flex-direction:row; width:100%; gap:10px;}
+    .hero-ctas .btn{flex:1; width:auto; padding:12px 14px; font-size:12.5px;}
+
+    .stats{padding:44px 0;}
+    .stats-grid{grid-template-columns:repeat(2,1fr); gap:26px 16px;}
+    .stat-num{font-size:40px;}
+    .stat-num-text{font-size:32px;}
+
+    .section{padding:64px 0;}
+    .section-head{flex-direction:column; align-items:flex-start; margin-bottom:34px; gap:10px;}
+    .section-head h2{font-size:34px;}
+    .section-head p{max-width:100%;}
+
+    .cat-grid, .menu-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:repeat(2,1fr); gap:14px;}
+    .why-card{padding:24px 16px;}
+    .why-ic{width:44px; height:44px; font-size:19px; margin-bottom:14px;}
+    .why-card h3{font-size:14px;}
+    .why-card p{font-size:12px;}
+
+    .brands-panel{padding:44px 16px 34px; border-radius:22px;}
+    .brand-shield{width:170px; padding:46px 14px 38px;}
+    .shield-photo{width:76px; height:76px;}
+    .brand-shield h3{font-size:13px;}
+    .brand-shield p{font-size:10.5px;}
+
+    .combo-banner{flex-direction:column; text-align:center; gap:24px; padding:44px 26px; border-radius:24px;}
+    .combo-text h2{font-size:38px;}
+    .combo-off{font-size:70px;}
+
+    .testi-grid{grid-template-columns:1fr;}
+
+    .insta-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:130px;}
+
+    .app-section{border-radius:24px; padding:36px 24px;}
+    .app-text{padding:10px 0 30px;}
+    .app-text h2{font-size:32px;}
+    .phone-mockup{width:200px; height:410px;}
+
+    .menu-card-grid{grid-template-columns:1fr;}
+    .home-menu-grid{grid-template-columns:1fr;}
+    .explore-head h2{font-size:32px;}
+
+    .menu-modal{width:100vw; max-width:100vw; height:100vh; height:100dvh; max-height:100vh; max-height:100dvh; border-radius:0; top:0; left:0; transform:none;}
     .menu-modal.open{transform:none;}
 
     .cart-drawer{width:100vw; max-width:100vw; height:100vh; max-height:100vh; border-radius:0; top:0; left:0; transform:none;}
