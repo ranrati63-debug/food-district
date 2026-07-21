@@ -143,7 +143,7 @@
 
   /* ===== WHY CHOOSE ===== */
   .why-section{background:var(--gray);}
-  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:26px;}
+  .why-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:26px; max-width:760px; margin:0 auto;}
   .why-card{
     background:#fff; border-radius:22px; padding:36px 28px; box-shadow:var(--shadow-card);
     transition:transform .3s ease;
@@ -616,7 +616,12 @@
     .section-head h2{font-size:34px;}
     .section-head p{max-width:100%;}
 
-    .cat-grid, .why-grid, .menu-grid{grid-template-columns:1fr;}
+    .cat-grid, .menu-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:repeat(2,1fr); gap:14px;}
+    .why-card{padding:24px 16px;}
+    .why-ic{width:44px; height:44px; font-size:19px; margin-bottom:14px;}
+    .why-card h3{font-size:14px;}
+    .why-card p{font-size:12px;}
 
     .brands-panel{padding:44px 16px 34px; border-radius:22px;}
     .brand-shield{width:170px; padding:46px 14px 38px;}
@@ -707,34 +712,17 @@
   </div>
 </section>
 
-<!-- WHY CHOOSE -->
-<section class="section why-section reveal">
+<!-- COMBO -->
+<section class="section reveal">
   <div class="wrap">
-    <div class="section-head">
-      <div><div class="eyebrow">The District Standard</div><h2>Why Choose Food District</h2></div>
-      <p>Four promises we don't compromise on, on every single order.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-ic">🌿</div>
-        <h3>Fresh Ingredients</h3>
-        <p>Sourced daily, never frozen for storage — every dish starts from scratch.</p>
+    <div class="combo-banner">
+      <div class="combo-text">
+        <div class="eyebrow">Limited Time</div>
+        <h2>Today's Combo</h2>
+        <p style="color:#c9c9c9; font-size:15px; max-width:340px; margin-bottom:26px;">Any Biryani + Drink + Dessert, bundled at one unbeatable price.</p>
+        <a href="#" class="btn btn-gold">Order Now</a>
       </div>
-      <div class="why-card">
-        <div class="why-ic">👨‍🍳</div>
-        <h3>Prepared Fresh Daily</h3>
-        <p>Nothing sits in a warmer. Your order is cooked only after it's placed.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-ic">⚡</div>
-        <h3>Fast Delivery</h3>
-        <p>Hot, sealed, and on your table in an average of 15 minutes.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-ic">🍽️</div>
-        <h3>Restaurant Quality</h3>
-        <p>Cloud kitchen efficiency, fine-dining consistency, every time.</p>
-      </div>
+      <div class="combo-off">30%<span>OFF TODAY</span></div>
     </div>
   </div>
 </section>
@@ -907,21 +895,6 @@
   </div>
 </section>
 
-<!-- COMBO -->
-<section class="section reveal" style="padding-top:0;">
-  <div class="wrap">
-    <div class="combo-banner">
-      <div class="combo-text">
-        <div class="eyebrow">Limited Time</div>
-        <h2>Today's Combo</h2>
-        <p style="color:#c9c9c9; font-size:15px; max-width:340px; margin-bottom:26px;">Any Biryani + Drink + Dessert, bundled at one unbeatable price.</p>
-        <a href="#" class="btn btn-gold">Order Now</a>
-      </div>
-      <div class="combo-off">30%<span>OFF TODAY</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- TESTIMONIALS -->
 <section class="section reveal">
   <div class="wrap">
@@ -1000,6 +973,38 @@
           <div class="phone-card">Mojito × 1</div>
           <div class="phone-track">🚴 Out for Delivery — 8 min</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="section why-section reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">The District Standard</div><h2>Why Choose Food District</h2></div>
+      <p>Four promises we don't compromise on, on every single order.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-ic">🌿</div>
+        <h3>Fresh Ingredients</h3>
+        <p>Sourced daily, never frozen for storage — every dish starts from scratch.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ic">👨‍🍳</div>
+        <h3>Prepared Fresh Daily</h3>
+        <p>Nothing sits in a warmer. Your order is cooked only after it's placed.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ic">⚡</div>
+        <h3>Fast Delivery</h3>
+        <p>Hot, sealed, and on your table in an average of 15 minutes.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ic">🍽️</div>
+        <h3>Restaurant Quality</h3>
+        <p>Cloud kitchen efficiency, fine-dining consistency, every time.</p>
       </div>
     </div>
   </div>
