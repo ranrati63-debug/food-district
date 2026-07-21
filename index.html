@@ -500,7 +500,21 @@
   .offer-dots span.active{background:var(--gold); width:24px; border-radius:5px;}
 
   /* ===== TESTIMONIALS ===== */
-  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .testi-slider{position:relative; max-width:720px; margin:0 auto;}
+  .testi-track{display:flex; transition:transform .55s cubic-bezier(.2,.9,.3,1);}
+  .testi-slide{flex:0 0 100%; min-width:0; display:flex; justify-content:center;}
+  .testi-slide .testi-card{width:100%;}
+  .testi-dots{display:flex; justify-content:center; gap:8px; margin-top:24px;}
+  .testi-dots span{width:8px; height:8px; border-radius:50%; background:rgba(17,17,17,.16); cursor:pointer; transition:all .25s ease; display:block;}
+  .testi-dots span.active{background:var(--red); width:22px; border-radius:5px;}
+  .testi-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%;
+    background:#fff; box-shadow:var(--shadow-card); border:none; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; z-index:5; color:var(--black); transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .testi-arrow:hover{transform:translateY(-50%) scale(1.07);}
+  .testi-arrow.prev{left:-56px;}
+  .testi-arrow.next{right:-56px;}
   .testi-card{
     background:rgba(255,255,255,.6); backdrop-filter:blur(16px); border:1px solid rgba(17,17,17,.06);
     border-radius:22px; padding:32px; box-shadow:var(--shadow-card);
@@ -628,11 +642,13 @@
     .nav-cta{display:none;}
     .nav-inner{gap:10px;}
 
-    .hero{padding:100px 0 0; min-height:80vh; padding-bottom:60px; align-items:flex-start;}
+    .hero{padding:100px 0 0; min-height:80vh; padding-bottom:36px; align-items:stretch;}
+    .hero-grid{align-items:stretch;}
+    .hero-grid > div{display:flex; flex-direction:column; width:100%;}
     .hero h1{font-size:38px; letter-spacing:0; margin-bottom:16px;}
     .hero p.sub{font-size:14.5px; padding:0 4px; margin-bottom:22px;}
-    .hero-ctas{flex-direction:row; width:100%; gap:10px;}
-    .hero-ctas .btn{flex:1; width:auto; padding:12px 14px; font-size:12.5px;}
+    .hero-ctas{flex-direction:row; width:82%; max-width:300px; margin:0 auto; gap:8px; margin-top:auto; padding-top:20px;}
+    .hero-ctas .btn{flex:1; width:auto; padding:9px 10px; font-size:11px;}
 
     .stats{padding:44px 0;}
     .stats-grid{grid-template-columns:repeat(2,1fr); gap:26px 16px;}
@@ -666,7 +682,8 @@
     .offer-arrow.next{right:10px;}
     .offer-dots{bottom:14px;}
 
-    .testi-grid{grid-template-columns:1fr;}
+    .testi-slider{max-width:100%;}
+    .testi-arrow{display:none;}
 
     .insta-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:130px;}
 
@@ -974,31 +991,46 @@
     <div class="section-head">
       <div><div class="eyebrow">Loved By Regulars</div><h2>What Our Customers Say</h2></div>
     </div>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-top">
-          <div class="testi-avatar">A</div>
-          <div><div class="testi-name">Ananya R.</div><div class="testi-role">Regular Customer</div></div>
+    <div class="testi-slider" id="testiSlider">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-top">
+              <div class="testi-avatar">A</div>
+              <div><div class="testi-name">Ananya R.</div><div class="testi-role">Regular Customer</div></div>
+            </div>
+            <div class="testi-stars">★★★★★</div>
+            <p>The biryani tastes exactly like a proper Hyderabadi kitchen — and it's on my table in 15 minutes.</p>
+          </div>
         </div>
-        <div class="testi-stars">★★★★★</div>
-        <p>The biryani tastes exactly like a proper Hyderabadi kitchen — and it's on my table in 15 minutes.</p>
-      </div>
-      <div class="testi-card">
-        <div class="testi-top">
-          <div class="testi-avatar">K</div>
-          <div><div class="testi-name">Kabir S.</div><div class="testi-role">Weekly Orderer</div></div>
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-top">
+              <div class="testi-avatar">K</div>
+              <div><div class="testi-name">Kabir S.</div><div class="testi-role">Weekly Orderer</div></div>
+            </div>
+            <div class="testi-stars">★★★★★</div>
+            <p>Butter chicken and kunafa in the same order? Food District is the only place that pulls that off well.</p>
+          </div>
         </div>
-        <div class="testi-stars">★★★★★</div>
-        <p>Butter chicken and kunafa in the same order? Food District is the only place that pulls that off well.</p>
-      </div>
-      <div class="testi-card">
-        <div class="testi-top">
-          <div class="testi-avatar">M</div>
-          <div><div class="testi-name">Meera T.</div><div class="testi-role">Office Lunch Group</div></div>
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-top">
+              <div class="testi-avatar">M</div>
+              <div><div class="testi-name">Meera T.</div><div class="testi-role">Office Lunch Group</div></div>
+            </div>
+            <div class="testi-stars">★★★★★</div>
+            <p>Consistent quality, every single order. Our whole office switched to Food District for lunch.</p>
+          </div>
         </div>
-        <div class="testi-stars">★★★★★</div>
-        <p>Consistent quality, every single order. Our whole office switched to Food District for lunch.</p>
       </div>
+      <button class="testi-arrow prev" id="testiPrev" aria-label="Previous review">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="testi-arrow next" id="testiNext" aria-label="Next review">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="testi-dots" id="testiDots"></div>
     </div>
   </div>
 </section>
@@ -1553,7 +1585,7 @@
       const c = COUPONS[code];
       discount = c.type === 'percent' ? Math.round(subtotal * c.value / 100) : c.value;
       couponApplied = code;
-      msg.textContent = `"${code}" applied — you saved ₹${discount}!`;
+      msg.textContent = `Coupon applied — you saved ₹${discount}!`;
       msg.className = 'coupon-msg ok';
     } else {
       discount = 0;
@@ -1578,7 +1610,7 @@
       msg += `• ${c.item.name} × ${c.qty} — ₹${c.item.price * c.qty}%0A`;
     });
     msg += `%0ASubtotal: ₹${subtotal}%0A`;
-    if(discount > 0) msg += `Coupon (${couponApplied}): -₹${discount}%0A`;
+    if(discount > 0) msg += `Discount: -₹${discount}%0A`;
     msg += `Total: ₹${total}%0A%0APlease confirm my order. Thank you!`;
     const waNumber = '9198XXXXXXXX'; // TODO: replace with your real WhatsApp Business number
     window.open(`https://wa.me/${waNumber}?text=${msg}`, '_blank');
@@ -1626,6 +1658,66 @@
     slider.addEventListener('mouseleave', restartAutoplay);
 
     // touch swipe support
+    let startX = 0;
+    let touching = false;
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      touching = true;
+      clearInterval(autoplayTimer);
+    }, {passive:true});
+    track.addEventListener('touchend', (e) => {
+      if(!touching) return;
+      touching = false;
+      const diff = e.changedTouches[0].clientX - startX;
+      if(Math.abs(diff) > 40){
+        diff < 0 ? goTo(index + 1) : goTo(index - 1);
+      } else {
+        restartAutoplay();
+      }
+    }, {passive:true});
+  })();
+
+  // ===== TESTIMONIAL SLIDER =====
+  (function(){
+    const slider = document.getElementById('testiSlider');
+    const track = document.getElementById('testiTrack');
+    const dotsWrap = document.getElementById('testiDots');
+    const prevBtn = document.getElementById('testiPrev');
+    const nextBtn = document.getElementById('testiNext');
+    if(!slider || !track) return;
+
+    const slides = Array.from(track.children);
+    const total = slides.length;
+    let index = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('span');
+      if(i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function goTo(i){
+      index = (i + total) % total;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, di) => d.classList.toggle('active', di === index));
+      restartAutoplay();
+    }
+
+    prevBtn.addEventListener('click', () => goTo(index - 1));
+    nextBtn.addEventListener('click', () => goTo(index + 1));
+
+    let autoplayTimer;
+    function restartAutoplay(){
+      clearInterval(autoplayTimer);
+      autoplayTimer = setInterval(() => goTo(index + 1), 6000);
+    }
+    restartAutoplay();
+
+    slider.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+    slider.addEventListener('mouseleave', restartAutoplay);
+
     let startX = 0;
     let touching = false;
     track.addEventListener('touchstart', (e) => {
