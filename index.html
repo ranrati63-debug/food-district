@@ -114,13 +114,6 @@
   }
   .btn-outline-dark:hover{border-color:var(--black); transform:translateY(-3px);}
 
-  /* ===== STATS ===== */
-  .stats{background:var(--black); padding:70px 0;}
-  .stats-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:20px; text-align:center;}
-  .stat-num{font-family:'Bebas Neue'; font-size:56px; color:var(--gold); line-height:1;}
-  .stat-num-text{font-family:'Bebas Neue'; font-size:44px; color:var(--gold); line-height:1;}
-  .stat-lbl{color:#c9c9c9; font-size:13.5px; font-weight:600; margin-top:10px; text-transform:uppercase; letter-spacing:1px;}
-
   /* ===== SECTION HEAD ===== */
   .section{padding:110px 0;}
   .section-head{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:56px; gap:30px;}
@@ -522,6 +515,20 @@
   .phone-card{background:rgba(255,255,255,.12); border-radius:14px; padding:12px; margin-bottom:10px; font-size:11.5px; font-weight:600;}
   .phone-track{margin-top:auto; background:var(--gold); color:#111; border-radius:14px; padding:14px; font-size:12px; font-weight:800; text-align:center;}
 
+  /* ===== GLOBAL CHECKOUT BAR (mobile) ===== */
+  .global-cart-bar{
+    display:none; position:fixed; left:0; right:0; bottom:0; z-index:290; background:var(--black); color:#fff;
+    padding:14px 20px; align-items:center; justify-content:space-between; gap:14px;
+    box-shadow:0 -10px 30px rgba(0,0,0,.3); transform:translateY(100%); transition:transform .3s ease;
+  }
+  .global-cart-bar.show{transform:translateY(0);}
+  .global-cart-bar .summary{font-size:13.5px; font-weight:700;}
+  .global-cart-bar .summary b{color:var(--gold);}
+  .global-cart-bar button{
+    background:var(--gold); color:#111; border:none; padding:11px 22px; border-radius:10px; font-weight:800;
+    font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap;
+  }
+
   /* ===== MOBILE BOTTOM NAV ===== */
   .bottom-nav{
     display:none; position:fixed; left:0; right:0; bottom:0; z-index:280;
@@ -599,7 +606,7 @@
     .nav-inner{gap:10px;}
     .nav-cta .btn{padding:9px 16px; font-size:12.5px;}
 
-    .hero{padding:120px 0 0; min-height:auto; padding-bottom:70px;}
+    .hero{padding:120px 0 0; min-height:88vh; padding-bottom:70px; align-items:center;}
     .hero h1{font-size:38px; letter-spacing:0;}
     .hero p.sub{font-size:14.5px; padding:0 4px;}
     .hero-ctas{flex-direction:column; width:100%; gap:12px;}
@@ -650,6 +657,8 @@
 
     .bottom-nav{display:grid;}
     body{padding-bottom:78px;}
+    .global-cart-bar{display:flex; bottom:70px;}
+    .global-cart-bar:not(.show){transform:translateY(120%);}
   }
   @media(max-width:400px){
     .wrap{padding:0 16px;}
@@ -684,7 +693,10 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784663228/9d2611ba-a85a-442f-b378-54592bc86cc4_eayex1.png" alt="Food District spread">
+    <picture>
+      <source media="(max-width:720px)" srcset="https://res.cloudinary.com/dara80vtx/image/upload/v1784663745/57d072b7-6d2f-4482-9f6c-233082aa7c0e_wtsfvz.png">
+      <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784663228/9d2611ba-a85a-442f-b378-54592bc86cc4_eayex1.png" alt="Food District spread">
+    </picture>
   </div>
   <div class="wrap hero-grid">
     <div>
@@ -695,17 +707,6 @@
         <a href="#" class="btn btn-outline-dark" data-open-menu>Explore Menu</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats">
-  <div class="wrap stats-grid">
-    <div><div class="stat-num" data-count="100">0+</div><div class="stat-lbl">Menu Items</div></div>
-    <div><div class="stat-num" data-count="15" data-suffix=" min">0</div><div class="stat-lbl">Avg Preparation</div></div>
-    <div><div class="stat-num-text">Fresh</div><div class="stat-lbl">Made Daily</div></div>
-    <div><div class="stat-num-text">Premium</div><div class="stat-lbl">Ingredients</div></div>
-    <div><div class="stat-num-text">Fast</div><div class="stat-lbl">Delivery</div></div>
   </div>
 </section>
 
@@ -901,6 +902,12 @@
   🛒 <span class="cart-fab-badge" id="cartBadge">0</span>
 </button>
 
+<!-- GLOBAL CHECKOUT BAR (mobile) -->
+<div class="global-cart-bar" id="globalCartBar">
+  <div class="summary"><b id="globalCartCount">0</b> items · ₹<span id="globalCartTotal">0</span></div>
+  <button id="globalCartBtn">Checkout →</button>
+</div>
+
 <!-- CART POPUP (checkout) -->
 <div class="cart-overlay" id="cartOverlay"></div>
 <aside class="cart-drawer" id="cartDrawer">
@@ -913,14 +920,14 @@
   </div>
   <div class="cart-footer">
     <div class="coupon-row">
-      <input type="text" id="couponInput" placeholder="Coupon code (try FOOD10)">
+      <input type="text" id="couponInput" placeholder="Coupon code (try FD10)">
       <button id="applyCoupon">Apply</button>
     </div>
     <div class="coupon-msg" id="couponMsg"></div>
     <div class="cart-line"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
     <div class="cart-line discount-line" id="discountLine" style="display:none;"><span>Discount</span><span id="cartDiscount">-₹0</span></div>
     <div class="cart-line cart-total"><span>Total</span><span id="cartTotal">₹0</span></div>
-    <button class="btn btn-primary" id="whatsappCheckout" style="width:100%; margin-top:16px;">Order on WhatsApp 💬</button>
+    <button class="btn btn-primary" id="whatsappCheckout" style="width:100%; margin-top:16px;">Order Now 💬</button>
   </div>
 </aside>
 
@@ -1166,33 +1173,6 @@
   document.querySelector('.hamburger').addEventListener('click', function(){
     document.querySelector('.nav-links').classList.toggle('open');
   });
-
-  // Animated counters
-  (function(){
-    const counters = document.querySelectorAll('.stat-num');
-    let done = false;
-    function animate(){
-      if(done) return;
-      const statsSection = document.querySelector('.stats');
-      const rect = statsSection.getBoundingClientRect();
-      if(rect.top < window.innerHeight * 0.8){
-        done = true;
-        counters.forEach(el => {
-          const target = parseInt(el.dataset.count, 10);
-          const suffix = el.dataset.suffix || '+';
-          let cur = 0;
-          const step = Math.max(1, Math.round(target/40));
-          const timer = setInterval(() => {
-            cur += step;
-            if(cur >= target){ cur = target; clearInterval(timer); }
-            el.textContent = cur + suffix;
-          }, 30);
-        });
-      }
-    }
-    window.addEventListener('scroll', animate);
-    animate();
-  })();
 
   // Scroll reveal
   (function(){
@@ -1450,6 +1430,14 @@
       document.getElementById('modalCartTotal').textContent = total;
       modalCartBar.classList.toggle('show', totalQty > 0);
     }
+
+    // sync global checkout bar (mobile) — appears whenever something is added
+    const globalCartBar = document.getElementById('globalCartBar');
+    if(globalCartBar){
+      document.getElementById('globalCartCount').textContent = totalQty;
+      document.getElementById('globalCartTotal').textContent = total;
+      globalCartBar.classList.toggle('show', totalQty > 0);
+    }
   }
 
   // Modal tabs
@@ -1544,6 +1532,7 @@
     if(!menuModal.classList.contains('open')) document.body.style.overflow = '';
   }
   cartFab.addEventListener('click', openCart);
+  document.getElementById('globalCartBtn').addEventListener('click', openCart);
 
   // Mobile bottom nav
   (function(){
@@ -1575,8 +1564,7 @@
 
   // Coupon logic
   const COUPONS = {
-    'FOOD10': { type:'percent', value:10 },
-    'WELCOME50': { type:'flat', value:50 }
+    'FD10': { type:'percent', value:10 }
   };
   document.getElementById('applyCoupon').addEventListener('click', () => {
     const input = document.getElementById('couponInput');
