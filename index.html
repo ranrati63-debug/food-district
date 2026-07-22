@@ -46,13 +46,13 @@
 
   /* ===== NAV ===== */
   nav.site-nav{
-    position:fixed; top:0; left:0; right:0; z-index:200; padding:18px 0;
+    position:fixed; top:0; left:0; right:0; z-index:200; padding:12px 0;
     background:rgba(255,255,255,.75); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
     border-bottom:1px solid rgba(17,17,17,.06); transition:all .3s ease;
   }
   .nav-inner{display:flex; align-items:center; justify-content:space-between;}
   .nav-logo{display:flex; align-items:center; gap:10px;}
-  .nav-logo img{height:42px; width:auto;}
+  .nav-logo img{height:64px; width:auto;}
   .nav-logo span{font-family:'Bebas Neue'; font-size:22px; letter-spacing:1px;}
   .nav-links{display:flex; gap:36px; font-weight:600; font-size:14.5px;}
   .nav-links a{position:relative; padding:6px 0; transition:color .2s ease;}
@@ -113,6 +113,7 @@
     background:#fff; color:var(--black); border:1.5px solid rgba(17,17,17,.15); box-shadow:var(--shadow-card);
   }
   .btn-outline-dark:hover{border-color:var(--black); transform:translateY(-3px);}
+  .hero-ctas-mobile{display:none;}
 
   /* ===== SECTION HEAD ===== */
   .section{padding:110px 0;}
@@ -641,14 +642,17 @@
     .hamburger{display:flex;}
     .nav-cta{display:none;}
     .nav-inner{gap:10px;}
+    .nav-logo img{height:46px;}
 
-    .hero{padding:100px 0 0; min-height:80vh; padding-bottom:36px; align-items:stretch;}
-    .hero-grid{align-items:stretch;}
-    .hero-grid > div{display:flex; flex-direction:column; width:100%;}
+    .hero{padding:100px 0 0; min-height:80vh; padding-bottom:90px; align-items:flex-start; overflow:visible;}
     .hero h1{font-size:38px; letter-spacing:0; margin-bottom:16px;}
     .hero p.sub{font-size:14.5px; padding:0 4px; margin-bottom:22px;}
-    .hero-ctas{flex-direction:row; width:82%; max-width:300px; margin:0 auto; gap:8px; margin-top:auto; padding-top:20px;}
-    .hero-ctas .btn{flex:1; width:auto; padding:9px 10px; font-size:11px;}
+    .hero-ctas-desktop{display:none;}
+    .hero-ctas-mobile{
+      display:flex; position:absolute; left:50%; bottom:24px; transform:translateX(-50%);
+      width:82%; max-width:300px; gap:8px; z-index:3;
+    }
+    .hero-ctas-mobile .btn{flex:1; width:auto; padding:9px 10px; font-size:11px;}
 
     .stats{padding:44px 0;}
     .stats-grid{grid-template-columns:repeat(2,1fr); gap:26px 16px;}
@@ -754,11 +758,15 @@
     <div>
       <h1>ONE PLACE.<br><span class="line2">ENDLESS CRAVINGS.</span></h1>
       <p class="sub">Order your favorite Biryani, Butter Chicken, Momos, Kebabs, Kunafa and Beverages from one premium kitchen.</p>
-      <div class="hero-ctas">
+      <div class="hero-ctas hero-ctas-desktop">
         <a href="#" class="btn btn-primary" data-open-menu>Order Now</a>
         <a href="#" class="btn btn-outline-dark" data-open-menu>Explore Menu</a>
       </div>
     </div>
+  </div>
+  <div class="hero-ctas hero-ctas-mobile">
+    <a href="#" class="btn btn-primary" data-open-menu>Order Now</a>
+    <a href="#" class="btn btn-outline-dark" data-open-menu>Explore Menu</a>
   </div>
 </section>
 
@@ -1612,7 +1620,7 @@
     msg += `%0ASubtotal: ₹${subtotal}%0A`;
     if(discount > 0) msg += `Discount: -₹${discount}%0A`;
     msg += `Total: ₹${total}%0A%0APlease confirm my order. Thank you!`;
-    const waNumber = '9198XXXXXXXX'; // TODO: replace with your real WhatsApp Business number
+    const waNumber = '918249692577'; // Food District WhatsApp order number
     window.open(`https://wa.me/${waNumber}?text=${msg}`, '_blank');
   });
 
