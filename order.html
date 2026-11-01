@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dum Dynasty – Authentic Kachche Gosht Ki Biryani | Bhubaneswar</title>
+<meta name="description" content="Dum Dynasty serves authentic Kachche Gosht Ki Dum Biryani, curries, kebabs and combos in Bhubaneswar. Order online on Swiggy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Princess+Sofia&display=swap" rel="stylesheet">
+<style>
+:root{--title:'Princess Sofia',cursive;--text:'Jost',sans-serif;--red:#800000;--burg:#650000;--gold:#FFC000;--cream:#FEF2E4;--white:#fff;--ink:#3a0d0d;
+--h1:clamp(2.2rem,5vw,4.8rem);--h2:clamp(1.6rem,3vw,2.8rem);--h3:clamp(1rem,1.5vw,1.4rem);--body:clamp(.95rem,1.2vw,1.12rem);
+--hdr:68px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--hdr)}
+body{font-family:var(--text);font-size:var(--body);color:var(--ink);background:var(--cream);overflow-x:hidden;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--text);line-height:1.2}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{width:min(1200px,100% - 2rem);margin-inline:auto}
+section{padding:clamp(2.5rem,6vw,4.5rem) 0}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;border-radius:999px;font-weight:600;font-size:var(--body);border:2px solid var(--gold);background:var(--gold);color:var(--burg);cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:inherit}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.25)}
+.btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.85)}
+.btn.sm{padding:.4rem 1.1rem}
+.title{text-align:center;margin-bottom:2rem}
+.title h2{font-size:var(--h2);color:var(--gold);font-weight:800;text-shadow:0 1px 1px rgba(101,0,0,.25);display:inline-flex;align-items:center;gap:1rem}
+.title h2::before,.title h2::after{content:"";width:clamp(24px,5vw,60px);height:3px;background:var(--gold);border-radius:2px}
+.title h2 em{font-style:normal;color:var(--red);text-shadow:none}
+.title.light h2 em{color:#fff}
+.title h2,.about h2,.sig h2{font-family:var(--text);font-weight:400;font-size:calc(var(--h2)*1.25);text-shadow:none}
+.title h2{text-shadow:0 1px 1px rgba(101,0,0,.25)}
+.title p{margin-top:.3rem}
+.on-dark .title h2,.title.light h2{color:var(--gold)}
+
+/* image slots: set URL in IMG config below; gradient + emoji fallback */
+.ph{background:radial-gradient(circle at 30% 30%,#c0392b,var(--burg));background-size:cover;background-position:center;display:grid;place-items:center;font-size:clamp(2.5rem,6vw,5rem);color:rgba(255,255,255,.85);overflow:hidden}
+.ph.has{font-size:0}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:var(--burg);color:#fff;height:var(--hdr);box-shadow:0 2px 12px rgba(0,0,0,.35)}
+.hdr{display:flex;align-items:center;justify-content:space-between;height:100%;gap:1rem}
+.logo{font-family:var(--text);font-weight:800;font-size:1.6rem;color:var(--gold);line-height:1;display:flex;flex-direction:column}
+.logo small{font-family:var(--text);font-size:.5rem;letter-spacing:.12em;font-weight:500;color:var(--gold);opacity:.9}
+.logo img{height:52px;width:auto;display:block}
+.foot-logo img{height:80px}
+nav ul{display:flex;gap:1.6rem;list-style:none}
+nav a{font-size:.9rem;font-weight:500;padding:.4rem 0;border-bottom:2px solid transparent}
+nav a:hover,nav a.active{color:var(--gold);border-color:var(--gold)}
+.tools{display:flex;align-items:center;gap:.9rem}
+.ic{background:none;border:0;color:#fff;cursor:pointer;font-size:1.15rem;position:relative}
+.ic b{position:absolute;top:-6px;right:-8px;background:var(--gold);color:var(--burg);font-size:.6rem;border-radius:50%;width:15px;height:15px;display:grid;place-items:center}
+.burger{display:none}
+
+/* hero */
+#home{padding:0;position:relative;background:var(--burg);line-height:0}
+.hero-img{width:100%;height:auto;display:block}
+.hero-btns{position:absolute;left:max(1rem,calc(50% - 600px));bottom:clamp(.8rem,5%,2.5rem);display:flex;gap:.8rem;flex-wrap:wrap;line-height:1.6}
+
+/* trust */
+.trust{background:var(--white);padding:1.2rem 0;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.tf{display:flex;align-items:center;gap:.7rem;padding:0 .8rem;border-right:1px solid #e8d5b5}
+.tf:last-child{border:0}
+.tf span{font-size:1.8rem}
+.tf strong{display:block;font-size:.9rem;line-height:1.2}
+.tf small{font-size:.72rem;color:#7a5a4a}
+
+/* menu */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.cat{border-radius:16px;overflow:hidden;background:var(--red);color:#fff;box-shadow:0 8px 20px rgba(101,0,0,.25);transition:transform .25s;display:flex;flex-direction:column}
+.cat:hover{transform:translateY(-5px)}
+.cat .ph{aspect-ratio:1.5/1;font-size:clamp(2rem,4vw,3.2rem)}
+.cat span{display:flex;justify-content:space-between;padding:.65rem 1rem;font-weight:600;font-size:var(--h3);background:linear-gradient(var(--red),var(--burg))}
+.cat{overflow:visible}
+.cat span{border-radius:0 0 16px 16px;justify-content:center;text-align:center}
+.cat>.ph{border-radius:16px 16px 0 0}
+.cat>.ph.has{overflow:visible;background-size:contain;background-repeat:no-repeat;background-position:center bottom;background-color:transparent;filter:drop-shadow(0 16px 12px rgba(0,0,0,.55));transform:translateY(-4%) scale(1.08);transform-origin:center bottom;transition:transform .35s;position:relative;z-index:2}
+.cat:hover>.ph.has{transform:translateY(-7%) scale(1.14)}
+.track.menu-track{gap:1.1rem;padding:2.8rem .3rem 1.6rem;margin-top:0}
+.menu-track .cat{flex:0 0 calc((100% - 3.3rem)/4);scroll-snap-align:start}
+@media(max-width:1024px){.menu-track .cat{flex-basis:calc((100% - 1.1rem)/2)}}
+@media(max-width:760px){.track.menu-track{gap:.7rem}.menu-track .cat{flex-basis:calc((100% - .7rem)/2)}}
+.cat.cust{align-items:center;justify-content:center;text-align:center;padding:1.5rem;gap:.5rem;font-size:3rem}
+.cat.cust span{background:none;padding:0;font-size:var(--h3)}
+
+/* signature */
+#signature{padding:0}
+.sig{background:linear-gradient(90deg,rgba(101,0,0,.55),transparent 60%),url('https://res.cloudinary.com/dey4zikfh/image/upload/v1793568193/902a7e16-e94e-46a9-958d-789dd34f6573_qoudbi.png') center/cover no-repeat,var(--burg);color:#fff}
+.sig .wrap{display:grid;grid-template-columns:1fr;align-items:center;min-height:clamp(260px,32vw,420px);padding:clamp(2rem,5vw,3.5rem) 0}
+.sig h2{font-size:var(--h2)}
+.sig h2 span{display:block;color:var(--gold);font-size:1.3em}
+.sig p{margin:1rem 0 1.4rem;max-width:42ch}
+.sig .pic{aspect-ratio:1.4/1;border-radius:30px}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+.about .pic{aspect-ratio:1.5/1;border-radius:24px;box-shadow:none}
+.about h2{color:var(--gold);text-shadow:0 1px 1px rgba(101,0,0,.25)}
+.about h2 span{display:block;font-size:1.3em;color:var(--red);text-shadow:none}
+.about p{margin-top:1rem;max-width:52ch}
+
+/* combos */
+.combos{display:grid;grid-template-columns:1fr 1fr .7fr;gap:1.2rem}
+.card{background:#fff;border-radius:18px;padding:1rem;box-shadow:0 8px 22px rgba(101,0,0,.12)}
+.combo{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:center}
+.combo .ph{aspect-ratio:1/1;border-radius:14px;font-size:2.8rem}
+.combo h3{font-size:var(--h3);margin-bottom:.6rem}
+.price{display:inline-block;background:var(--red);color:var(--gold);font-weight:600;font-size:clamp(1.2rem,2vw,1.8rem);padding:.1rem 1.1rem;border-radius:999px;margin-bottom:.7rem}
+.combo-img{padding:0;overflow:hidden;display:block;align-self:stretch;aspect-ratio:1.75/1;background:#fff7ec;line-height:0;transition:transform .25s}.combo-img:hover{transform:translateY(-4px)}.combo-img img{width:100%;height:100%;object-fit:contain;display:block}
+.offer{background:linear-gradient(150deg,var(--red),var(--burg));color:#fff;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem}
+.offer h3{color:var(--gold)}
+.offer p{font-size:.85rem}
+
+/* testimonials */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.rev{position:relative}
+.rev .who{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem}
+.av{width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--burg);display:grid;place-items:center;font-weight:600}
+.stars{color:var(--gold);letter-spacing:2px}
+.rev::after{content:"”";position:absolute;right:1rem;top:.2rem;font-family:var(--text);font-size:3.5rem;color:#e0c9a8}
+
+/* gallery */
+.gal{position:relative}
+.track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:.3rem}
+.track::-webkit-scrollbar{display:none}
+.track>.ph{flex:0 0 calc((100% - 4rem)/5);aspect-ratio:1.15/1;border-radius:16px;scroll-snap-align:start;font-size:3rem}
+.arr{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:0;background:#fff;color:var(--red);font-size:1.3rem;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:2}
+.arr.l{left:-10px}.arr.r{right:-10px}
+
+/* steps */
+#order{background:linear-gradient(var(--red),var(--burg));color:#fff;border-radius:40px 40px 0 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;text-align:center}
+.step{position:relative}
+.step .i{font-size:2.6rem}
+.step h3{font-size:calc(var(--h3)*1.3);font-family:var(--text);font-weight:400}
+.step h3 b{font-family:var(--text);font-weight:600;display:inline-grid;place-items:center;width:1.6em;height:1.6em;background:#fff;color:var(--red);border-radius:50%;margin-right:.4rem;font-size:.85em}
+.step:not(:last-child)::after{content:"→";position:absolute;right:-1rem;top:1rem;color:var(--gold);font-size:1.6rem}
+
+/* contact */
+#contact{background:#fff;padding:1.8rem 0}
+.contact{display:grid;grid-template-columns:1.2fr 1fr auto;gap:1.5rem;align-items:center}
+.contact div{padding-right:1rem;border-right:1px solid #e8d5b5}
+.contact div:last-child{border:0}
+.contact strong{display:block;color:var(--red);font-size:var(--h3);font-family:var(--text)}
+/*sky*/.skyline{background:#FEF2E4;line-height:0;overflow:hidden}.skyline img{width:100%;height:auto;display:block}
+
+/* footer */
+footer{background:var(--burg);color:#fff;padding:2.5rem 0 5rem}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:2rem}
+footer h4{color:var(--gold);margin-bottom:.8rem;font-size:1rem}
+footer ul{list-style:none;display:grid;gap:.4rem;font-size:.9rem}
+footer a:hover{color:var(--gold)}
+.soc{display:flex;gap:.7rem;margin-bottom:.8rem}
+.soc a{width:38px;height:38px;border-radius:50%;background:#fff;color:var(--red);display:grid;place-items:center;font-weight:700}
+
+/* fixed mobile CTA */
+.mcta{display:none}
+
+/* reveal: single entrance on scroll */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}}
+
+/* tablet */
+@media(max-width:1024px){
+ .grid4{grid-template-columns:repeat(2,1fr)}
+ .combos{grid-template-columns:1fr 1fr}.offer{grid-column:1/-1}
+ .foot{grid-template-columns:1fr 1fr}
+ .track>.ph{flex-basis:calc((100% - 2rem)/3)}
+ nav ul{gap:1rem}
+}
+/* mobile */
+@media(max-width:760px){
+ :root{--hdr:60px}
+ .burger{display:block}
+ nav{position:fixed;inset:var(--hdr) 0 0 auto;width:min(75vw,300px);background:var(--burg);transform:translateX(100%);transition:transform .3s;padding:1.5rem;box-shadow:-8px 0 24px rgba(0,0,0,.4)}
+ nav.open{transform:none}
+ nav ul{flex-direction:column;gap:1.2rem}
+ nav a{font-size:1.05rem}
+ .tools .btn{display:none}
+ .hero-btns{left:0;right:0;justify-content:center;gap:.5rem;padding:0 1rem}
+ .hero-btns .btn{padding:.5rem 1rem;font-size:.8rem}
+ .trust .wrap{grid-template-columns:1fr 1fr;gap:.8rem}
+ .tf{border:0;padding:0}
+ .grid4{grid-template-columns:repeat(2,1fr);gap:.7rem}
+ .sig{background:linear-gradient(180deg,rgba(101,0,0,.6),transparent 65%),url('https://res.cloudinary.com/dey4zikfh/image/upload/v1793568195/ebdb6167-131d-4c41-92a2-3360866de7b2_fjtise.png') center/cover no-repeat,var(--burg)}
+ .sig .wrap{min-height:420px;align-items:start}
+ .about{grid-template-columns:1fr;text-align:center}
+ .sig .wrap{text-align:center}
+ .sig p,.about p{margin-inline:auto}
+ .combos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1rem;scrollbar-width:none;padding-bottom:.5rem}
+ .combos>*{flex:0 0 85%;scroll-snap-align:center}
+ .grid3.revs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1rem;scrollbar-width:none}
+ .grid3.revs>*{flex:0 0 82%;scroll-snap-align:center}
+ .track>.ph{flex-basis:70%}
+ .arr.l{left:0}.arr.r{right:0}
+ .steps{grid-template-columns:1fr}.step:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-1.6rem}
+ .contact{grid-template-columns:1fr}.contact div{border:0}
+ .foot{grid-template-columns:1fr 1fr}.foot>:first-child{grid-column:1/-1}
+ .title h2::before,.title h2::after{display:none}
+ .mcta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.6rem 1rem;background:var(--burg);box-shadow:0 -4px 14px rgba(0,0,0,.35)}
+ .mcta .btn{width:100%;justify-content:center}
+}
+h1,h2,h3,h4,.cat span,.step h3,.title h2,.about h2,.sig h2,.offer h3,.contact strong,footer h4{font-family:var(--title);font-weight:400}
+.title h2,.about h2,.sig h2{font-size:calc(var(--h2)*1.25)}
+.cat span{font-size:calc(var(--h3)*1.25)}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="wrap hdr">
+  <a href="#home" class="logo" aria-label="Dum Dynasty home"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793568117/912d1779-6949-46f5-a06d-c01dcabfe645_xhtwq1.png" alt="Dum Dynasty"></a>
+  <nav id="nav" aria-label="Main">
+   <ul>
+    <li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#combos">Combos</a></li>
+    <li><a href="#offers">Offers</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>
+   </ul>
+  </nav>
+  <div class="tools">
+   <a class="btn sm swiggy" target="_blank" rel="noopener">Order on Swiggy</a>
+   <button class="ic burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+ </div>
+</header>
+
+<main>
+<section id="home">
+ <picture>
+  <source media="(max-width:760px)" srcset="https://res.cloudinary.com/dey4zikfh/image/upload/v1793566287/3736be33-6c08-4255-8829-53daabc20fcf_ni0eja.png">
+  <img class="hero-img" src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793566287/e1ae9b21-7568-4810-b43a-f775cf571a06_eyjzgz.png" alt="Dum Dynasty – Authentic Kachche Gosht Ki Biryani" fetchpriority="high">
+ </picture>
+ <div class="hero-btns">
+  <a class="btn swiggy" target="_blank" rel="noopener">🛵 Order on Swiggy →</a><a class="btn ghost" href="#menu">Explore Menu</a>
+ </div>
+</section>
+
+<div class="trust"><div class="wrap">
+ <div class="tf"><span>🍲</span><div><strong>Authentic Recipes</strong><small>Traditional Dum Cooking</small></div></div>
+ <div class="tf"><span>🌿</span><div><strong>Fresh Ingredients</strong><small>Premium &amp; Handpicked</small></div></div>
+ <div class="tf"><span>⏱️</span><div><strong>Timely Delivery</strong><small>Hot &amp; Hygienic</small></div></div>
+ <div class="tf"><span>🛡️</span><div><strong>Quality Assured</strong><small>Taste You Can Trust</small></div></div>
+</div></div>
+
+<section id="menu"><div class="wrap">
+ <div class="title rv"><h2><span>Explore Our <em>Menu</em></span></h2><p>Biryani, Main Course, Starters, Desserts and Beverages</p></div>
+ <div class="gal rv">
+  <div class="track menu-track" id="menutrack">
+   <a class="cat swiggy" target="_blank" rel="noopener"><div class="ph" data-img="biryani"></div><span>Biryani</span></a>
+   <a class="cat swiggy" target="_blank" rel="noopener"><div class="ph" data-img="main"></div><span>Main Course</span></a>
+   <a class="cat swiggy" target="_blank" rel="noopener"><div class="ph" data-img="starters"></div><span>Starters</span></a>
+   <a class="cat swiggy" target="_blank" rel="noopener"><div class="ph" data-img="desserts"></div><span>Desserts</span></a>
+   <a class="cat swiggy" target="_blank" rel="noopener"><div class="ph" data-img="beverages"></div><span>Beverages</span></a>
+  </div>
+ </div>
+</div></section>
+
+<section id="signature" aria-label="Signature Biryani"><div class="sig"><div class="wrap">
+ <div class="rv">
+  <h2>Our <span>Signature Biryani</span></h2>
+  <p>Made with the authentic Kachche Gosht dum style, marinated meat, fragrant spices and premium rice for an unforgettable taste.</p>
+  <a class="btn swiggy" target="_blank" rel="noopener">Try Our Biryani →</a>
+ </div>
+</div></div></section>
+
+<section id="about"><div class="wrap about">
+ <div class="ph pic rv" data-img="about" role="img" aria-label="Dum cooking in a sealed handi"></div>
+ <div class="rv">
+  <h2>The Art of <span>Dum Cooking</span></h2>
+  <p>At Dum Dynasty, we follow the traditional Kachche Gosht Dum method where marinated meat and aromatic rice cook together slowly in a sealed pot, locking in rich flavours and a royal taste.</p>
+ </div>
+</div></section>
+
+<section id="combos"><div class="wrap">
+ <div class="title rv"><h2><span>Special Combos <em>&amp; Offers</em></span></h2><p>Value Meals for Every Craving</p></div>
+ <div class="combos rv" id="offers">
+  <a class="card combo-img swiggy" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793571282/2ae54068-8a5c-4652-a3ab-af30d94dbecd_1_geiche.png" alt="Biryani + 3 Piece Tikka + Sweet – ₹179" loading="lazy"></a>
+  <a class="card combo-img swiggy" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793571301/868c6a60-a068-4176-9b25-379604db1212_eh45oa.png" alt="Biryani + Butter Chicken + Sweet – ₹199" loading="lazy"></a>
+  <div class="card offer"><span style="font-size:2.4rem">🏷️</span><h3>Special Offers</h3><p>Combo Deals, Seasonal Offers &amp; More</p><a class="btn sm swiggy" target="_blank" rel="noopener">View All Offers</a></div>
+ </div>
+</div></section>
+
+<section id="contact"><div class="wrap contact">
+ <div><strong>📍 Visit Us</strong>Bhubaneswar, Odisha<br>Open Daily: 11:00 AM – 11:00 PM</div>
+ <div><strong>📞 Call / WhatsApp</strong><a href="tel:+918249571373">+91 8249571373</a> · <a href="https://wa.me/918249571373" target="_blank" rel="noopener">WhatsApp</a></div>
+ <a class="btn swiggy" target="_blank" rel="noopener">🛵 Order on Swiggy</a>
+</div></section>
+</main>
+
+<div class="skyline" aria-hidden="true"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793570015/0d6ca962-c7ea-4751-96d6-e73f353eb96d_cuc3ve.png" alt="" loading="lazy"></div>
+
+<footer><div class="wrap foot">
+ <div><a href="#home" class="logo foot-logo" aria-label="Dum Dynasty home"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793568117/912d1779-6949-46f5-a06d-c01dcabfe645_xhtwq1.png" alt="Dum Dynasty"></a></div>
+ <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#combos">Combos</a></li><li><a href="#offers">Offers</a></li></ul></div>
+ <div><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#contact">Contact Us</a></li><li><a href="#home">Privacy Policy</a></li><li><a href="#home">Terms &amp; Conditions</a></li></ul></div>
+ <div><h4>Stay Connected</h4><div class="soc"><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="YouTube">▶</a></div><p style="font-size:.85rem">Follow us for new menus, offers and updates.</p></div>
+</div></footer>
+
+<div class="mcta"><a class="btn swiggy" target="_blank" rel="noopener">🛵 Order on Swiggy</a></div>
+
+<script>
+/* ===== CENTRAL CONFIG ===== */
+const SWIGGY_RESTAURANT_URL = "YOUR_SWIGGY_RESTAURANT_LINK"; // paste the Dum Dynasty Swiggy listing URL
+/* Paste image URLs (WordPress media library links) to replace placeholders */
+const IMG = {hero:"",biryani:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793568304/20508b89-8874-403c-8358-c287c307e1f2_s8tlgw.png",main:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793569631/3d9524df-d91f-484d-9f1b-0e57ea3ea38c_bmo31z.png",starters:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793569607/e9e514f2-aad6-480d-8072-9a8a5011533b_lq1fun.png",kabab:"",desserts:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793569635/3ba78469-fda4-45de-81c8-10f6dd9d9816_zx3tzf.png",beverages:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793569605/17e21eff-104e-451a-aa30-4f47c3fef846_qaelzg.png",combos:"",signature:"",about:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793570379/ad75cf81-938a-4b1d-b813-74dd31e12702_uthpyg.png",combo1:"",combo2:"",};
+
+document.querySelectorAll('.swiggy').forEach(a=>{a.href=SWIGGY_RESTAURANT_URL;a.target="_blank";a.rel="noopener"});
+document.querySelectorAll('[data-img]').forEach(el=>{const u=IMG[el.dataset.img];if(u){el.style.backgroundImage=`url("${u}")`;el.classList.add('has')}});
+
+/* mobile drawer */
+const nav=document.getElementById('nav'),bg=document.getElementById('burger');
+const setNav=o=>{nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);bg.textContent=o?'✕':'☰'};
+bg.onclick=()=>setNav(!nav.classList.contains('open'));
+nav.querySelectorAll('a').forEach(a=>a.onclick=()=>setNav(false));
+addEventListener('keydown',e=>{if(e.key==='Escape')setNav(false)});
+
+/* active link highlight */
+const links=[...nav.querySelectorAll('a')];
+const map={home:'home',menu:'menu',signature:'menu',about:'about',combos:'combos',offers:'offers',contact:'contact'};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=map[e.target.id];links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id))}}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('#home,#menu,#signature,#about,#combos,#contact').forEach(s=>io.observe(s));
+
+/* reveal on scroll */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+const mt=document.getElementById('menutrack');
+let mPause=false,mTimer;
+const mNext=()=>{if(mPause)return;const c=mt.querySelector('.cat');const st=c.offsetWidth+parseFloat(getComputedStyle(mt).gap||0);
+ if(mt.scrollLeft+mt.clientWidth>=mt.scrollWidth-4)mt.scrollTo({left:0,behavior:'smooth'});else mt.scrollBy({left:st,behavior:'smooth'})};
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches){mTimer=setInterval(mNext,2600)}
+mt.addEventListener('mouseenter',()=>mPause=true);mt.addEventListener('mouseleave',()=>mPause=false);
+mt.addEventListener('touchstart',()=>mPause=true,{passive:true});
+mt.addEventListener('touchend',()=>setTimeout(()=>mPause=false,3000),{passive:true});
+</script>
+</body>
+</html>
