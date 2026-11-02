@@ -88,7 +88,7 @@ nav a:hover,nav a.active{color:var(--gold);border-color:var(--gold)}
 
 /* signature */
 #signature{padding:0}
-.sig{background:linear-gradient(90deg,rgba(101,0,0,.55),transparent 60%),url('https://res.cloudinary.com/dey4zikfh/image/upload/v1793568193/902a7e16-e94e-46a9-958d-789dd34f6573_qoudbi.png') center/cover no-repeat,var(--burg);color:#fff}
+.sig{background:linear-gradient(90deg,rgba(101,0,0,.55),transparent 60%),url('https://res.cloudinary.com/dey4zikfh/image/upload/v1793568193/902a7e16-e94e-46a9-958d-789dd34f6573_qoudbi.webp') center/cover no-repeat,var(--burg);color:#fff}
 .sig .wrap{display:grid;grid-template-columns:1fr;align-items:center;min-height:clamp(260px,32vw,420px);padding:clamp(2rem,5vw,3.5rem) 0}
 .sig h2{font-size:var(--h2)}
 .sig h2 span{display:block;color:var(--gold);font-size:1.3em}
@@ -186,7 +186,7 @@ footer a:hover{color:var(--gold)}
  .trust .wrap{grid-template-columns:1fr 1fr;gap:.8rem}
  .tf{border:0;padding:0}
  .grid4{grid-template-columns:repeat(2,1fr);gap:.7rem}
- .sig{background:linear-gradient(180deg,rgba(101,0,0,.6),transparent 65%),url('https://res.cloudinary.com/dey4zikfh/image/upload/v1793568195/ebdb6167-131d-4c41-92a2-3360866de7b2_fjtise.png') center/cover no-repeat,var(--burg)}
+ .sig{background:linear-gradient(180deg,rgba(101,0,0,.6),transparent 65%),url('https://res.cloudinary.com/dey4zikfh/image/upload/v1793568195/ebdb6167-131d-4c41-92a2-3360866de7b2_fjtise.webp') center/cover no-repeat,var(--burg)}
  .sig .wrap{min-height:420px;align-items:start}
  .about{grid-template-columns:1fr;text-align:center}
  .sig .wrap{text-align:center}
@@ -207,13 +207,56 @@ footer a:hover{color:var(--gold)}
 h1,h2,h3,h4,.cat span,.step h3,.title h2,.about h2,.sig h2,.offer h3,.contact strong,footer h4{font-family:var(--title);font-weight:400}
 .title h2,.about h2,.sig h2{font-size:calc(var(--h2)*1.25)}
 .cat span{font-size:calc(var(--h3)*1.25)}
+
+/* ===== menu popup ===== */
+.cat[data-menu]{cursor:pointer}
+.mm{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(40,0,0,.78);backdrop-filter:blur(4px)}
+.mm.open{display:flex}
+.mm-panel{width:min(820px,100%);max-height:90vh;display:flex;flex-direction:column;background:var(--cream);border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);border:2px solid var(--gold);animation:mmIn .3s ease}
+@keyframes mmIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+.mm-head{background:linear-gradient(120deg,var(--burg),var(--red));color:#fff;padding:1rem 3.2rem 1rem 1.4rem;position:relative}
+.mm-head img{height:40px;width:auto}
+.mm-head p{color:var(--gold);letter-spacing:.2em;font-size:.75rem;margin-top:.2rem}
+.mm-x{position:absolute;right:.8rem;top:.8rem;width:36px;height:36px;border-radius:50%;border:0;background:var(--gold);color:var(--burg);font-size:1.2rem;cursor:pointer;line-height:1}
+.mm-tabs{display:flex;gap:.4rem;overflow-x:auto;background:var(--burg);padding:.5rem .8rem;scrollbar-width:none}
+.mm-tabs::-webkit-scrollbar{display:none}
+.mm-tab{flex:0 0 auto;border:1px solid rgba(255,192,0,.5);background:transparent;color:#fff;padding:.35rem .95rem;border-radius:999px;cursor:pointer;font-family:inherit;font-size:.9rem;white-space:nowrap;transition:background .2s}
+.mm-tab:hover{background:rgba(255,192,0,.2)}
+.mm-tab[aria-selected="true"]{background:var(--gold);color:var(--burg);border-color:var(--gold);font-weight:600}
+.mm-body{overflow-y:auto;padding:1.2rem 1.4rem;flex:1}
+.mm-body h3{font-family:var(--title);font-size:clamp(1.6rem,3.4vw,2.3rem);color:var(--red);font-weight:400;line-height:1.1}
+.mm-sub{letter-spacing:.2em;font-size:.72rem;color:var(--red);opacity:.8;margin:.2rem 0 1rem;text-transform:uppercase}
+.mm-groups{display:grid;grid-template-columns:1fr;gap:1.2rem}
+.mm-groups.two{grid-template-columns:1fr 1fr}
+.mm-badge{display:inline-block;color:#fff;padding:.15rem .9rem;border-radius:999px;font-size:.8rem;font-weight:600;letter-spacing:.06em;margin-bottom:.4rem}
+.mm-badge.veg{background:#0f7a3a}.mm-badge.non{background:#c0261b}
+.mm-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.55rem 0;border-bottom:1px dashed rgba(128,0,0,.3)}
+.mm-row:last-child{border:0}
+.mm-name{font-weight:600;display:flex;align-items:flex-start;gap:.5rem}
+.mm-name small{display:block;font-weight:400;font-style:italic;font-size:.8rem;opacity:.75}
+.mm-dot{flex:0 0 12px;height:12px;margin-top:.4rem;border:1.5px solid;display:grid;place-items:center}
+.mm-dot::after{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.mm-dot.v{color:#0f7a3a}.mm-dot.n{color:#c0261b}
+.mm-price{color:var(--red);font-weight:600;white-space:nowrap;font-size:1.1em}
+.mm-price.tbd{font-size:.78rem;font-weight:500;opacity:.7}
+.mm-note{background:#fff;border-radius:14px;padding:1.2rem;text-align:center;border:1px dashed var(--red)}
+.mm-foot{background:#fff;border-top:2px solid var(--gold);padding:.8rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.mm-foot span{font-size:.85rem;color:var(--red)}
+body.mm-lock{overflow:hidden}
+@media(max-width:760px){
+ .mm{padding:0;align-items:flex-end}
+ .mm-panel{max-height:94vh;border-radius:24px 24px 0 0;border-bottom:0}
+ .mm-groups.two{grid-template-columns:1fr}
+ .mm-foot .btn{width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){.mm-panel{animation:none}}
 </style>
 </head>
 <body>
 
 <header>
  <div class="wrap hdr">
-  <a href="#home" class="logo" aria-label="Dum Dynasty home"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793568117/912d1779-6949-46f5-a06d-c01dcabfe645_xhtwq1.png" alt="Dum Dynasty"></a>
+  <a href="#home" class="logo" aria-label="Dum Dynasty home"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793568117/912d1779-6949-46f5-a06d-c01dcabfe645_xhtwq1.webp" alt="Dum Dynasty"></a>
   <nav id="nav" aria-label="Main">
    <ul>
     <li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#combos">Combos</a></li>
@@ -230,8 +273,8 @@ h1,h2,h3,h4,.cat span,.step h3,.title h2,.about h2,.sig h2,.offer h3,.contact st
 <main>
 <section id="home">
  <picture>
-  <source media="(max-width:760px)" srcset="https://res.cloudinary.com/dey4zikfh/image/upload/v1793566287/3736be33-6c08-4255-8829-53daabc20fcf_ni0eja.png">
-  <img class="hero-img" src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793566287/e1ae9b21-7568-4810-b43a-f775cf571a06_eyjzgz.png" alt="Dum Dynasty – Authentic Kachche Gosht Ki Biryani" fetchpriority="high">
+  <source media="(max-width:760px)" srcset="https://res.cloudinary.com/dey4zikfh/image/upload/v1793566287/3736be33-6c08-4255-8829-53daabc20fcf_ni0eja.webp">
+  <img class="hero-img" src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793566287/e1ae9b21-7568-4810-b43a-f775cf571a06_eyjzgz.webp" alt="Dum Dynasty – Authentic Kachche Gosht Ki Biryani" fetchpriority="high">
  </picture>
  <div class="hero-btns">
   <a class="btn swiggy" target="_blank" rel="noopener">🛵 Order on Swiggy →</a><a class="btn ghost" href="#menu">Explore Menu</a>
@@ -249,11 +292,11 @@ h1,h2,h3,h4,.cat span,.step h3,.title h2,.about h2,.sig h2,.offer h3,.contact st
  <div class="title rv"><h2><span>Explore Our <em>Menu</em></span></h2><p>Biryani, Main Course, Starters, Desserts and Beverages</p></div>
  <div class="gal rv">
   <div class="track menu-track" id="menutrack">
-   <a class="cat swiggy" target="_blank" rel="noopener"><div class="ph" data-img="biryani"></div><span>Biryani</span></a>
-   <a class="cat swiggy" target="_blank" rel="noopener"><div class="ph" data-img="main"></div><span>Main Course</span></a>
-   <a class="cat swiggy" target="_blank" rel="noopener"><div class="ph" data-img="starters"></div><span>Starters</span></a>
-   <a class="cat swiggy" target="_blank" rel="noopener"><div class="ph" data-img="desserts"></div><span>Desserts</span></a>
-   <a class="cat swiggy" target="_blank" rel="noopener"><div class="ph" data-img="beverages"></div><span>Beverages</span></a>
+   <div class="cat" role="button" tabindex="0" data-menu="biryani" aria-haspopup="dialog"><div class="ph" data-img="biryani"></div><span>Biryani</span></div>
+   <div class="cat" role="button" tabindex="0" data-menu="main" aria-haspopup="dialog"><div class="ph" data-img="main"></div><span>Main Course</span></div>
+   <div class="cat" role="button" tabindex="0" data-menu="starters" aria-haspopup="dialog"><div class="ph" data-img="starters"></div><span>Starters</span></div>
+   <div class="cat" role="button" tabindex="0" data-menu="sweets" aria-haspopup="dialog"><div class="ph" data-img="desserts"></div><span>Desserts</span></div>
+   <div class="cat" role="button" tabindex="0" data-menu="drinks" aria-haspopup="dialog"><div class="ph" data-img="beverages"></div><span>Beverages</span></div>
   </div>
  </div>
 </div></section>
@@ -277,8 +320,8 @@ h1,h2,h3,h4,.cat span,.step h3,.title h2,.about h2,.sig h2,.offer h3,.contact st
 <section id="combos"><div class="wrap">
  <div class="title rv"><h2><span>Special Combos <em>&amp; Offers</em></span></h2><p>Value Meals for Every Craving</p></div>
  <div class="combos rv" id="offers">
-  <a class="card combo-img swiggy" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793571282/2ae54068-8a5c-4652-a3ab-af30d94dbecd_1_geiche.png" alt="Biryani + 3 Piece Tikka + Sweet – ₹179" loading="lazy"></a>
-  <a class="card combo-img swiggy" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793571301/868c6a60-a068-4176-9b25-379604db1212_eh45oa.png" alt="Biryani + Butter Chicken + Sweet – ₹199" loading="lazy"></a>
+  <a class="card combo-img swiggy" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793571282/2ae54068-8a5c-4652-a3ab-af30d94dbecd_1_geiche.webp" alt="Biryani + 3 Piece Tikka + Sweet – ₹179" loading="lazy"></a>
+  <a class="card combo-img swiggy" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793571301/868c6a60-a068-4176-9b25-379604db1212_eh45oa.webp" alt="Biryani + Butter Chicken + Sweet – ₹199" loading="lazy"></a>
   <div class="card offer"><span style="font-size:2.4rem">🏷️</span><h3>Special Offers</h3><p>Combo Deals, Seasonal Offers &amp; More</p><a class="btn sm swiggy" target="_blank" rel="noopener">View All Offers</a></div>
  </div>
 </div></section>
@@ -290,22 +333,32 @@ h1,h2,h3,h4,.cat span,.step h3,.title h2,.about h2,.sig h2,.offer h3,.contact st
 </div></section>
 </main>
 
-<div class="skyline" aria-hidden="true"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793570015/0d6ca962-c7ea-4751-96d6-e73f353eb96d_cuc3ve.png" alt="" loading="lazy"></div>
+<div class="skyline" aria-hidden="true"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793570015/0d6ca962-c7ea-4751-96d6-e73f353eb96d_cuc3ve.webp" alt="" loading="lazy"></div>
 
 <footer><div class="wrap foot">
- <div><a href="#home" class="logo foot-logo" aria-label="Dum Dynasty home"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793568117/912d1779-6949-46f5-a06d-c01dcabfe645_xhtwq1.png" alt="Dum Dynasty"></a></div>
+ <div><a href="#home" class="logo foot-logo" aria-label="Dum Dynasty home"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793568117/912d1779-6949-46f5-a06d-c01dcabfe645_xhtwq1.webp" alt="Dum Dynasty"></a></div>
  <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#combos">Combos</a></li><li><a href="#offers">Offers</a></li></ul></div>
  <div><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#contact">Contact Us</a></li><li><a href="#home">Privacy Policy</a></li><li><a href="#home">Terms &amp; Conditions</a></li></ul></div>
  <div><h4>Stay Connected</h4><div class="soc"><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="YouTube">▶</a></div><p style="font-size:.85rem">Follow us for new menus, offers and updates.</p></div>
 </div></footer>
 
+
+<div class="mm" id="mm" aria-hidden="true">
+ <div class="mm-panel" role="dialog" aria-modal="true" aria-labelledby="mmTitle">
+  <div class="mm-head"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793568117/912d1779-6949-46f5-a06d-c01dcabfe645_xhtwq1.webp" alt="Dum Dynasty"><p>TASTE THE ROYAL DUM</p><button class="mm-x" id="mmX" aria-label="Close menu">✕</button></div>
+  <div class="mm-tabs" id="mmTabs" role="tablist" aria-label="Menu categories"></div>
+  <div class="mm-body" id="mmBody"></div>
+  <div class="mm-foot"><span>Order hot &amp; fresh at your doorstep</span><a class="btn swiggy" target="_blank" rel="noopener">Order on Swiggy →</a></div>
+ </div>
+</div>
+
 <div class="mcta"><a class="btn swiggy" target="_blank" rel="noopener">🛵 Order on Swiggy</a></div>
 
 <script>
 /* ===== CENTRAL CONFIG ===== */
-const SWIGGY_RESTAURANT_URL = "YOUR_SWIGGY_RESTAURANT_LINK"; // paste the Dum Dynasty Swiggy listing URL
+const SWIGGY_RESTAURANT_URL = "https://www.swiggy.com/city/bhubaneswar/dum-dynasty-patia-rest1448920";
 /* Paste image URLs (WordPress media library links) to replace placeholders */
-const IMG = {hero:"",biryani:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793568304/20508b89-8874-403c-8358-c287c307e1f2_s8tlgw.png",main:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793569631/3d9524df-d91f-484d-9f1b-0e57ea3ea38c_bmo31z.png",starters:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793569607/e9e514f2-aad6-480d-8072-9a8a5011533b_lq1fun.png",kabab:"",desserts:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793569635/3ba78469-fda4-45de-81c8-10f6dd9d9816_zx3tzf.png",beverages:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793569605/17e21eff-104e-451a-aa30-4f47c3fef846_qaelzg.png",combos:"",signature:"",about:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793570379/ad75cf81-938a-4b1d-b813-74dd31e12702_uthpyg.png",combo1:"",combo2:"",};
+const IMG = {hero:"",biryani:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793568304/20508b89-8874-403c-8358-c287c307e1f2_s8tlgw.webp",main:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793569631/3d9524df-d91f-484d-9f1b-0e57ea3ea38c_bmo31z.webp",starters:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793569607/e9e514f2-aad6-480d-8072-9a8a5011533b_lq1fun.webp",kabab:"",desserts:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793569635/3ba78469-fda4-45de-81c8-10f6dd9d9816_zx3tzf.webp",beverages:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793569605/17e21eff-104e-451a-aa30-4f47c3fef846_qaelzg.webp",combos:"",signature:"",about:"https://res.cloudinary.com/dey4zikfh/image/upload/v1793570379/ad75cf81-938a-4b1d-b813-74dd31e12702_uthpyg.webp",combo1:"",combo2:"",};
 
 document.querySelectorAll('.swiggy').forEach(a=>{a.href=SWIGGY_RESTAURANT_URL;a.target="_blank";a.rel="noopener"});
 document.querySelectorAll('[data-img]').forEach(el=>{const u=IMG[el.dataset.img];if(u){el.style.backgroundImage=`url("${u}")`;el.classList.add('has')}});
@@ -335,6 +388,52 @@ if(!matchMedia('(prefers-reduced-motion:reduce)').matches){mTimer=setInterval(mN
 mt.addEventListener('mouseenter',()=>mPause=true);mt.addEventListener('mouseleave',()=>mPause=false);
 mt.addEventListener('touchstart',()=>mPause=true,{passive:true});
 mt.addEventListener('touchend',()=>setTimeout(()=>mPause=false,3000),{passive:true});
+
+/* ===== menu popup ===== */
+const MENU={
+ biryani:{tab:'Biryani',title:'Biryani',sub:'Royal flavours in every bite',groups:[{items:[
+  ['Hyderabadi Chicken Biryani – Single','500 ml | 2 Chicken Pieces | Egg Included',129,'n'],
+  ['Hyderabadi Chicken Biryani – Regular','750 ml | 3 Chicken Pieces | Egg Included',149,'n'],
+  ['Chicken Fry Biryani','500 ml | 3 Chicken Pieces',129,'n'],
+  ['Ghee Fry Piece Biryani','50 – 60 g Chicken Portion',149,'n'],
+  ['Andhra Chicken Biryani','500 ml | 50 – 60 g Chicken Portion',129,'n'],
+  ['Chicken Ghee Roast Biryani','50 – 60 g Chicken Portion',149,'n'],
+  ['Mix Veg Biryani','',90,'v'],['Paneer Biryani','',129,'v']]}]},
+ main:{tab:'Main Course',title:'Main Course',sub:'Rich gravies, bold flavours',two:true,groups:[
+  {label:'Vegetarian',cls:'veg',items:[['Mix Veg Makhani','',80,'v'],['Paneer Fry','',120,'v'],['Paneer Butter Masala','',120,'v'],['Pepper Mushroom','',120,'v'],['Pepper Paneer','',120,'v']]},
+  {label:'Non-Vegetarian',cls:'non',items:[['Andhra Chicken Curry','',120,'n'],['Chicken Masala','',100,'n'],['Chicken Ghee Roast','',120,'n'],['Chicken Dry Fry','',120,'n'],['Mughlai Chicken','',140,'n'],['Chicken Butter Masala','',120,'n']]}]},
+ starters:{tab:'Starters',title:'Starters',sub:'Crispy, juicy, irresistible',groups:[{items:[['Chicken Dry Fry','',null,'n'],['Chicken Pakoda','',null,'n']]}]},
+ rice:{tab:'Rice &amp; Fried Rice',title:'Rice &amp; Fried Rice',sub:'Simple, delicious, always a good choice',groups:[{items:[
+  ['Plain Rice','',50,'v'],['Veg Fried Rice','',80,'v'],['Paneer Fried Rice','',90,'v'],['Egg Fried Rice','',100,'n'],['Chicken Fried Rice','',100,'n'],['Lacha Paratha','',25,'v']]}]},
+ drinks:{tab:'Mojitos &amp; Drinks',title:'Mojitos &amp; Drinks',sub:'Refreshing sips',groups:[{items:[
+  ['Blue Lagoon','',null,'v'],['Virgin Mojito','',null,'v'],['Masala Soda','',null,'v'],['Lime Soda','',null,'v'],['Kokum Sharbat','',null,'v']]}]},
+ sweets:{tab:'Sweets &amp; Desserts',title:'Sweets &amp; Desserts',sub:'Sweet endings',groups:[{items:[['Double Ka Meetha','',35,'v'],['Gulab Jamun','',20,'v']]}]},
+ combos:{tab:'Combo Meals',title:'Combo Meals',sub:'Great food, better together',groups:[{items:[
+  ['Chicken Biryani + Cold Drink','',145],['Chicken Biryani + Chicken Fry (2 Pieces)','',169],['Chicken Biryani + Any Mojito','',169],['Any Chicken Biryani + Any Starter/Main Course (3 Pieces) + Cold Drink','',249]]}]}
+};
+const mm=document.getElementById('mm'),mmTabs=document.getElementById('mmTabs'),mmBody=document.getElementById('mmBody');
+let mmLast=null;
+const row=i=>`<div class="mm-row"><div class="mm-name">${i[3]?`<span class="mm-dot ${i[3]}"></span>`:''}<span>${i[0]}${i[1]?`<small>${i[1]}</small>`:''}</span></div>${i[2]==null?'<span class="mm-price tbd">Price on Swiggy</span>':`<span class="mm-price">₹${i[2]}</span>`}</div>`;
+function mmShow(k){
+ const d=MENU[k];
+ mmTabs.querySelectorAll('.mm-tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.k===k));
+ let h=`<h3 id="mmTitle">${d.title}</h3><p class="mm-sub">${d.sub}</p>`;
+ if(d.note)h+=`<div class="mm-note">${d.note}</div>`;
+ else h+=`<div class="mm-groups${d.two?' two':''}">`+d.groups.map(g=>`<div>${g.label?`<span class="mm-badge ${g.cls}">${g.label}</span>`:''}${g.items.map(row).join('')}</div>`).join('')+'</div>';
+ mmBody.innerHTML=h;mmBody.scrollTop=0;
+ const on=mmTabs.querySelector('[aria-selected="true"]');if(on)on.scrollIntoView({inline:'center',block:'nearest'});
+}
+mmTabs.innerHTML=Object.keys(MENU).map(k=>`<button class="mm-tab" role="tab" data-k="${k}">${MENU[k].tab}</button>`).join('');
+mmTabs.addEventListener('click',e=>{const b=e.target.closest('.mm-tab');if(b)mmShow(b.dataset.k)});
+function mmOpen(k,from){mmLast=from;mmShow(k);mm.classList.add('open');mm.setAttribute('aria-hidden','false');document.body.classList.add('mm-lock');document.getElementById('mmX').focus()}
+function mmClose(){mm.classList.remove('open');mm.setAttribute('aria-hidden','true');document.body.classList.remove('mm-lock');if(mmLast)mmLast.focus()}
+document.querySelectorAll('.cat[data-menu]').forEach(c=>{
+ c.addEventListener('click',()=>mmOpen(c.dataset.menu,c));
+ c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();mmOpen(c.dataset.menu,c)}});
+});
+document.getElementById('mmX').onclick=mmClose;
+mm.addEventListener('click',e=>{if(e.target===mm)mmClose()});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&mm.classList.contains('open'))mmClose()});
 </script>
 </body>
 </html>
