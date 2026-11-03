@@ -13,7 +13,7 @@
 --h1:clamp(2.2rem,5vw,4.8rem);--h2:clamp(1.6rem,3vw,2.8rem);--h3:clamp(1rem,1.5vw,1.4rem);--body:clamp(.95rem,1.2vw,1.12rem);
 --hdr:68px}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:var(--hdr)}
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:var(--hdr)}
 body{font-family:var(--text);font-size:var(--body);color:var(--ink);background:var(--cream);overflow-x:hidden;line-height:1.6}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -45,7 +45,8 @@ header{position:sticky;top:0;z-index:50;background:var(--burg);color:#fff;height
 .logo{font-family:var(--text);font-weight:800;font-size:1.6rem;color:var(--gold);line-height:1;display:flex;flex-direction:column}
 .logo small{font-family:var(--text);font-size:.5rem;letter-spacing:.12em;font-weight:500;color:var(--gold);opacity:.9}
 .logo img{height:52px;width:auto;display:block}
-.foot-logo img{height:80px}
+.foot-logo img{height:auto;max-height:80px;max-width:100%}
+.foot>*{min-width:0}
 nav ul{display:flex;gap:1.6rem;list-style:none}
 nav a{font-size:.9rem;font-weight:500;padding:.4rem 0;border-bottom:2px solid transparent}
 nav a:hover,nav a.active{color:var(--gold);border-color:var(--gold)}
@@ -120,7 +121,6 @@ nav a:hover,nav a.active{color:var(--gold);border-color:var(--gold)}
 .rev .who{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem}
 .av{width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--burg);display:grid;place-items:center;font-weight:600}
 .stars{color:var(--gold);letter-spacing:2px}
-.rev::after{content:"”";position:absolute;right:1rem;top:.2rem;font-family:var(--text);font-size:3.5rem;color:#e0c9a8}
 
 /* gallery */
 .gal{position:relative}
@@ -137,7 +137,6 @@ nav a:hover,nav a.active{color:var(--gold);border-color:var(--gold)}
 .step .i{font-size:2.6rem}
 .step h3{font-size:calc(var(--h3)*1.3);font-family:var(--text);font-weight:400}
 .step h3 b{font-family:var(--text);font-weight:600;display:inline-grid;place-items:center;width:1.6em;height:1.6em;background:#fff;color:var(--red);border-radius:50%;margin-right:.4rem;font-size:.85em}
-.step:not(:last-child)::after{content:"→";position:absolute;right:-1rem;top:1rem;color:var(--gold);font-size:1.6rem}
 
 /* contact */
 #contact{background:#fff;padding:1.8rem 0}
@@ -176,8 +175,8 @@ footer a:hover{color:var(--gold)}
 @media(max-width:760px){
  :root{--hdr:60px}
  .burger{display:block}
- nav{position:fixed;inset:var(--hdr) 0 0 auto;width:min(75vw,300px);background:var(--burg);transform:translateX(100%);transition:transform .3s;padding:1.5rem;box-shadow:-8px 0 24px rgba(0,0,0,.4)}
- nav.open{transform:none}
+ nav{position:fixed;inset:var(--hdr) 0 0 auto;width:min(75vw,300px);background:var(--burg);transform:translateX(100%);visibility:hidden;transition:transform .3s,visibility 0s .3s;padding:1.5rem;box-shadow:none}
+ nav.open{transform:none;visibility:visible;transition:transform .3s;box-shadow:-8px 0 24px rgba(0,0,0,.4)}
  nav ul{flex-direction:column;gap:1.2rem}
  nav a{font-size:1.05rem}
  .tools .btn{display:none}
@@ -197,8 +196,7 @@ footer a:hover{color:var(--gold)}
  .grid3.revs>*{flex:0 0 82%;scroll-snap-align:center}
  .track>.ph{flex-basis:70%}
  .arr.l{left:0}.arr.r{right:0}
- .steps{grid-template-columns:1fr}.step:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-1.6rem}
- .contact{grid-template-columns:1fr}.contact div{border:0}
+ .steps{grid-template-columns:1fr} .contact{grid-template-columns:1fr}.contact div{border:0}
  .foot{grid-template-columns:1fr 1fr}.foot>:first-child{grid-column:1/-1}
  .title h2::before,.title h2::after{display:none}
  .mcta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.6rem 1rem;background:var(--burg);box-shadow:0 -4px 14px rgba(0,0,0,.35)}
@@ -210,9 +208,9 @@ h1,h2,h3,h4,.cat span,.step h3,.title h2,.about h2,.sig h2,.offer h3,.contact st
 
 /* ===== menu popup ===== */
 .cat[data-menu]{cursor:pointer}
-.mm{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(40,0,0,.78);backdrop-filter:blur(4px)}
+.mm{position:fixed;inset:0;height:100vh;height:100dvh;z-index:100;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(40,0,0,.78);backdrop-filter:blur(4px)}
 .mm.open{display:flex}
-.mm-panel{width:min(820px,100%);max-height:90vh;display:flex;flex-direction:column;background:var(--cream);border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);border:2px solid var(--gold);animation:mmIn .3s ease}
+.mm-panel{width:min(820px,100%);max-height:90vh;max-height:90dvh;display:flex;flex-direction:column;background:var(--cream);border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);border:2px solid var(--gold);animation:mmIn .3s ease}
 @keyframes mmIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
 .mm-head{background:linear-gradient(120deg,var(--burg),var(--red));color:#fff;padding:1rem 3.2rem 1rem 1.4rem;position:relative}
 .mm-head img{height:40px;width:auto}
@@ -245,7 +243,11 @@ h1,h2,h3,h4,.cat span,.step h3,.title h2,.about h2,.sig h2,.offer h3,.contact st
 body.mm-lock{overflow:hidden}
 @media(max-width:760px){
  .mm{padding:0;align-items:flex-end}
- .mm-panel{max-height:94vh;border-radius:24px 24px 0 0;border-bottom:0}
+ .mm-panel{max-height:94vh;max-height:94dvh;border-radius:24px 24px 0 0;border-bottom:0}
+ .mm-foot{padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px))}
+ .mm-foot span{display:none}
+ .mm-body{padding:1rem}
+ .mm-head{padding:.8rem 3.2rem .8rem 1rem}
  .mm-groups.two{grid-template-columns:1fr}
  .mm-foot .btn{width:100%;justify-content:center}
 }
@@ -254,7 +256,7 @@ body.mm-lock{overflow:hidden}
 /* ===== floating buttons ===== */
 .fab{position:fixed;right:1rem;bottom:1rem;z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:.7rem}
 .wa{display:flex;align-items:center;height:56px;min-width:56px;border-radius:999px;background:#25D366;color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.35);overflow:hidden;transition:transform .2s,box-shadow .2s}
-.wa svg{flex:0 0 56px;width:56px;height:56px;padding:13px;fill:#fff}
+.wa .li{flex:0 0 56px;width:56px;height:56px;padding:15px;stroke:#fff}
 .wa span{max-width:0;opacity:0;white-space:nowrap;font-weight:500;transition:max-width .35s ease,opacity .25s,padding .35s}
 .wa:hover,.wa:focus-visible{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.4)}
 .wa:hover span,.wa:focus-visible span{max-width:200px;opacity:1;padding-right:1.2rem}
@@ -263,11 +265,23 @@ body.mm-lock{overflow:hidden}
 .up:hover{background:var(--burg);color:var(--gold)}
 @media(max-width:760px){.fab{bottom:4.9rem}}
 .sw-ic{width:1.5em;height:1.5em;flex:0 0 auto;border-radius:.35em}
+
+/* ===== lucide icons ===== */
+.li{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;vertical-align:-.22em}
+.tf>span .li{width:1.9rem;height:1.9rem;color:var(--red)}
+.ic .li{width:1.5rem;height:1.5rem}
+.mm-x .li,.up .li{width:1.25rem;height:1.25rem;vertical-align:middle}
+.mm-x,.up{display:grid;place-items:center}
+.soc a .li{width:1.15rem;height:1.15rem;vertical-align:middle}
+.contact strong{display:flex;align-items:center;gap:.4rem}
+.contact strong .li{color:var(--red);width:1.3em;height:1.3em}
+.btn .li{width:1.15em;height:1.15em;vertical-align:middle}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="sw-logo" viewBox="0 0 61 61"><path fill="#ff5200" stroke="none" d="M 0.32 30.499998 C 0.32 17.534 0.32 11.053999 3.818 6.632 C 4.590451 5.6544404 5.47444 4.770451 6.452 3.998 C 10.868 0.5 17.354 0.5 30.32 0.5 C 43.286 0.5 49.766 0.5 54.188 3.998 C 55.165997 4.772 56.048 5.654 56.822002 6.632 C 60.32 11.048 60.32 17.534 60.32 30.499998 C 60.32 43.466 60.32 49.946 56.822002 54.368 C 56.049553 55.34556 55.165558 56.22955 54.188 57.002 C 49.772003 60.5 43.286 60.5 30.32 60.5 C 17.354 60.5 10.874 60.5 6.452 57.002 C 5.47444 56.22955 4.590451 55.34556 3.818 54.368 C 0.32 49.952 0.32 43.466 0.32 30.499998"/>
         <path fill="#ffffff" fill-rule="evenodd" stroke="none" d="M 32.317 24.065 L 32.317 17.849 C 32.315357 17.44541 31.98859 17.118645 31.585 17.117 C 31.18141 17.118645 30.854647 17.44541 30.852999 17.849 L 30.852999 25.151 C 30.852999 25.565 31.189 25.895002 31.597 25.895002 L 32.311 25.895002 C 42.685 25.895002 43.764996 26.435 43.117 28.625002 C 43.087 28.733 43.051 28.835001 43.015 28.949 Q 43.005997 28.987 42.997 29.015 C 40.273 37.229 32.905 47.507 30.727 50.446995 C 30.582994 50.64238 30.354715 50.75771 30.112 50.75771 C 29.869284 50.75771 29.641006 50.64238 29.497002 50.446995 C 28.183002 48.671 24.967 44.207 22.033 39.143 C 21.835001 38.681 21.739 37.601 24.997 37.601 L 28.980999 37.601 C 29.203001 37.601 29.383 37.781 29.383 38.003 L 29.383 41.219 C 29.383 41.603 29.665 41.957 30.049002 41.987 C 30.265476 42.005184 30.478804 41.92601 30.631002 41.771 C 30.771582 41.636494 30.84984 41.449543 30.846998 41.255 L 30.846998 36.893 C 30.844812 36.476383 30.507618 36.139187 30.091 36.137 L 22.039 36.137 C 20.635 36.137 19.783 34.937 19.225 33.845 C 17.473 30.173 16.219 26.549 16.219 23.692999 C 16.219 16.379 22.051 9.797 30.103003 9.797 C 37.273 9.797 42.703 15.010999 43.807003 21.317 C 43.813004 21.371 43.855003 21.611 43.861004 21.659 C 44.149 24.755001 36.073 24.401 32.677 24.419 C 32.581276 24.419807 32.48924 24.38214 32.42155 24.31445 C 32.353863 24.246761 32.316193 24.154724 32.317 24.059 Z"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-chef-hat" viewBox="0 0 24 24"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z" /> <path d="M6 17h12" /></symbol><symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" /> <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" /></symbol><symbol id="i-timer" viewBox="0 0 24 24"><line x1="10" x2="14" y1="2" y2="2" /> <line x1="12" x2="15" y1="14" y2="11" /> <circle cx="12" cy="14" r="8" /></symbol><symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /></symbol><symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12" /> <line x1="4" x2="20" y1="6" y2="6" /> <line x1="4" x2="20" y1="18" y2="18" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol><symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></symbol><symbol id="i-badge-percent" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /> <path d="m15 9-6 6" /> <path d="M9 9h.01" /> <path d="M15 15h.01" /></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7" /> <path d="M12 19V5" /></symbol><symbol id="i-message-circle" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></symbol><symbol id="i-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /> <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /> <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></symbol><symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" /> <path d="m10 15 5-3-5-3z" /></symbol></svg>
 
 <header>
  <div class="wrap hdr">
@@ -280,7 +294,7 @@ body.mm-lock{overflow:hidden}
   </nav>
   <div class="tools">
    <a class="btn sm swiggy" target="_blank" rel="noopener">Order on Swiggy</a>
-   <button class="ic burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+   <button class="ic burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg class="li" aria-hidden="true"><use href="#i-menu"/></svg></button>
   </div>
  </div>
 </header>
@@ -292,15 +306,15 @@ body.mm-lock{overflow:hidden}
   <img class="hero-img" src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793566287/e1ae9b21-7568-4810-b43a-f775cf571a06_eyjzgz.webp" alt="Dum Dynasty – Authentic Kachche Gosht Ki Biryani" fetchpriority="high">
  </picture>
  <div class="hero-btns">
-  <a class="btn swiggy" target="_blank" rel="noopener"><svg class="sw-ic" viewBox="0 0 61 61" aria-hidden="true"><use href="#sw-logo"/></svg> Order on Swiggy →</a><a class="btn ghost" href="#menu">Explore Menu</a>
+  <a class="btn swiggy" target="_blank" rel="noopener"><svg class="sw-ic" viewBox="0 0 61 61" aria-hidden="true"><use href="#sw-logo"/></svg> Order on Swiggy <svg class="li" aria-hidden="true"><use href="#i-arrow-right"/></svg></a><a class="btn ghost" href="#menu">Explore Menu</a>
  </div>
 </section>
 
 <div class="trust"><div class="wrap">
- <div class="tf"><span>🍲</span><div><strong>Authentic Recipes</strong><small>Traditional Dum Cooking</small></div></div>
- <div class="tf"><span>🌿</span><div><strong>Fresh Ingredients</strong><small>Premium &amp; Handpicked</small></div></div>
- <div class="tf"><span>⏱️</span><div><strong>Timely Delivery</strong><small>Hot &amp; Hygienic</small></div></div>
- <div class="tf"><span>🛡️</span><div><strong>Quality Assured</strong><small>Taste You Can Trust</small></div></div>
+ <div class="tf"><span><svg class="li" aria-hidden="true"><use href="#i-chef-hat"/></svg></span><div><strong>Authentic Recipes</strong><small>Traditional Dum Cooking</small></div></div>
+ <div class="tf"><span><svg class="li" aria-hidden="true"><use href="#i-leaf"/></svg></span><div><strong>Fresh Ingredients</strong><small>Premium &amp; Handpicked</small></div></div>
+ <div class="tf"><span><svg class="li" aria-hidden="true"><use href="#i-timer"/></svg></span><div><strong>Timely Delivery</strong><small>Hot &amp; Hygienic</small></div></div>
+ <div class="tf"><span><svg class="li" aria-hidden="true"><use href="#i-shield-check"/></svg></span><div><strong>Quality Assured</strong><small>Taste You Can Trust</small></div></div>
 </div></div>
 
 <section id="menu"><div class="wrap">
@@ -320,7 +334,7 @@ body.mm-lock{overflow:hidden}
  <div class="rv">
   <h2>Our <span>Signature Biryani</span></h2>
   <p>Made with the authentic Kachche Gosht dum style, marinated meat, fragrant spices and premium rice for an unforgettable taste.</p>
-  <a class="btn swiggy" target="_blank" rel="noopener">Try Our Biryani →</a>
+  <a class="btn swiggy" target="_blank" rel="noopener">Try Our Biryani <svg class="li" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
  </div>
 </div></div></section>
 
@@ -337,13 +351,13 @@ body.mm-lock{overflow:hidden}
  <div class="combos rv" id="offers">
   <a class="card combo-img swiggy" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793571282/2ae54068-8a5c-4652-a3ab-af30d94dbecd_1_geiche.webp" alt="Biryani + 3 Piece Tikka + Sweet – ₹179" loading="lazy"></a>
   <a class="card combo-img swiggy" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793571301/868c6a60-a068-4176-9b25-379604db1212_eh45oa.webp" alt="Biryani + Butter Chicken + Sweet – ₹199" loading="lazy"></a>
-  <div class="card offer"><span style="font-size:2.4rem">🏷️</span><h3>Special Offers</h3><p>Combo Deals, Seasonal Offers &amp; More</p><a class="btn sm swiggy" target="_blank" rel="noopener">View All Offers</a></div>
+  <div class="card offer"><svg class="li" style="width:2.6rem;height:2.6rem;color:var(--gold)" aria-hidden="true"><use href="#i-badge-percent"/></svg><h3>Special Offers</h3><p>Combo Deals, Seasonal Offers &amp; More</p><a class="btn sm swiggy" target="_blank" rel="noopener">View All Offers</a></div>
  </div>
 </div></section>
 
 <section id="contact"><div class="wrap contact">
- <div><strong>📍 Visit Us</strong>Bhubaneswar, Odisha<br>Open Daily: 11:00 AM – 11:00 PM</div>
- <div><strong>📞 Call / WhatsApp</strong><a href="tel:+918249571373">+91 8249571373</a> · <a href="https://wa.me/918249571373" target="_blank" rel="noopener">WhatsApp</a></div>
+ <div><strong><svg class="li" aria-hidden="true"><use href="#i-map-pin"/></svg> Visit Us</strong>Bhubaneswar, Odisha<br>Open Daily: 11:00 AM – 11:00 PM</div>
+ <div><strong><svg class="li" aria-hidden="true"><use href="#i-phone"/></svg> Call / WhatsApp</strong><a href="tel:+918249571373">+91 8249571373</a> · <a href="https://wa.me/918249571373" target="_blank" rel="noopener">WhatsApp</a></div>
  <a class="btn swiggy" target="_blank" rel="noopener"><svg class="sw-ic" viewBox="0 0 61 61" aria-hidden="true"><use href="#sw-logo"/></svg> Order on Swiggy</a>
 </div></section>
 </main>
@@ -354,23 +368,23 @@ body.mm-lock{overflow:hidden}
  <div><a href="#home" class="logo foot-logo" aria-label="Dum Dynasty home"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793568117/912d1779-6949-46f5-a06d-c01dcabfe645_xhtwq1.webp" alt="Dum Dynasty"></a></div>
  <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#combos">Combos</a></li><li><a href="#offers">Offers</a></li></ul></div>
  <div><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#contact">Contact Us</a></li><li><a href="#home">Privacy Policy</a></li><li><a href="#home">Terms &amp; Conditions</a></li></ul></div>
- <div><h4>Stay Connected</h4><div class="soc"><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="YouTube">▶</a></div><p style="font-size:.85rem">Follow us for new menus, offers and updates.</p></div>
+ <div><h4>Stay Connected</h4><div class="soc"><a href="#" aria-label="Instagram"><svg class="li" aria-hidden="true"><use href="#i-instagram"/></svg></a><a href="#" aria-label="Facebook"><svg class="li" aria-hidden="true"><use href="#i-facebook"/></svg></a><a href="#" aria-label="YouTube"><svg class="li" aria-hidden="true"><use href="#i-youtube"/></svg></a></div><p style="font-size:.85rem">Follow us for new menus, offers and updates.</p></div>
 </div></footer>
 
 
 <div class="mm" id="mm" aria-hidden="true">
  <div class="mm-panel" role="dialog" aria-modal="true" aria-labelledby="mmTitle">
-  <div class="mm-head"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793568117/912d1779-6949-46f5-a06d-c01dcabfe645_xhtwq1.webp" alt="Dum Dynasty"><p>TASTE THE ROYAL DUM</p><button class="mm-x" id="mmX" aria-label="Close menu">✕</button></div>
+  <div class="mm-head"><img src="https://res.cloudinary.com/dey4zikfh/image/upload/v1793568117/912d1779-6949-46f5-a06d-c01dcabfe645_xhtwq1.webp" alt="Dum Dynasty"><p>TASTE THE ROYAL DUM</p><button class="mm-x" id="mmX" aria-label="Close menu"><svg class="li" aria-hidden="true"><use href="#i-x"/></svg></button></div>
   <div class="mm-tabs" id="mmTabs" role="tablist" aria-label="Menu categories"></div>
   <div class="mm-body" id="mmBody"></div>
-  <div class="mm-foot"><span>Order hot &amp; fresh at your doorstep</span><a class="btn swiggy" target="_blank" rel="noopener">Order on Swiggy →</a></div>
+  <div class="mm-foot"><span>Order hot &amp; fresh at your doorstep</span><a class="btn swiggy" target="_blank" rel="noopener">Order on Swiggy <svg class="li" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
  </div>
 </div>
 
 
 <div class="fab">
- <button class="up" id="up" aria-label="Back to top">↑</button>
- <a class="wa" href="https://wa.me/918249571373?text=Hi%20Dum%20Dynasty%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener" aria-label="Order on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.8C11.6 28.3 13.8 29 16 29c7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.7c-2 0-3.9-.6-5.5-1.6l-.4-.2-4 1.1 1.1-3.9-.3-.4C5.7 20 5.3 18 5.3 16 5.3 9.9 10.1 5.3 16 5.3S26.7 10.1 26.7 16 21.9 26.7 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.7 5.8 5.1.8.4 1.4.6 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg><span>Order on WhatsApp</span></a>
+ <button class="up" id="up" aria-label="Back to top"><svg class="li" aria-hidden="true"><use href="#i-arrow-up"/></svg></button>
+ <a class="wa" href="https://wa.me/918249571373?text=Hi%20Dum%20Dynasty%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener" aria-label="Order on WhatsApp"><svg class="li" aria-hidden="true"><use href="#i-message-circle"/></svg><span>Order on WhatsApp</span></a>
 </div>
 
 <div class="mcta"><a class="btn swiggy" target="_blank" rel="noopener"><svg class="sw-ic" viewBox="0 0 61 61" aria-hidden="true"><use href="#sw-logo"/></svg> Order on Swiggy</a></div>
@@ -386,7 +400,7 @@ document.querySelectorAll('[data-img]').forEach(el=>{const u=IMG[el.dataset.img]
 
 /* mobile drawer */
 const nav=document.getElementById('nav'),bg=document.getElementById('burger');
-const setNav=o=>{nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);bg.textContent=o?'✕':'☰'};
+const setNav=o=>{nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);bg.innerHTML='<svg class="li" aria-hidden="true"><use href="#i-'+(o?'x':'menu')+'"/></svg>'};
 bg.onclick=()=>setNav(!nav.classList.contains('open'));
 nav.querySelectorAll('a').forEach(a=>a.onclick=()=>setNav(false));
 addEventListener('keydown',e=>{if(e.key==='Escape')setNav(false)});
